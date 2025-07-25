@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gain Wellness - Gestiona tus Turnos Fácilmente</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Favicon (usando el mismo logo) -->
-    <link rel="icon" href="/img/icono-noti.png" type="image/png">
+    <link rel="icon"  href="/img/icono-noti.png" type="image/png">
 
     <style>
         /* Usar la fuente Inter como predeterminada */
@@ -60,22 +57,18 @@
 </head>
 <body class="antialiased">
 
-    <!-- ========== HEADER ========== -->
     <header class="sticky top-0 z-40 w-full bg-black bg-opacity-80 backdrop-blur-md">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
                 <a href="#" class="flex-shrink-0">
                     <img class="h-12 w-auto" src="/img/logo.png" alt="Logo de Gain Wellness">
                 </a>
-                <!-- Menú de Navegación (Desktop) -->
                 <div class="hidden sm:flex sm:items-center sm:space-x-8">
                     <a href="#features" class="text-gray-300 hover:text-white transition-colors duration-300">Características</a>
                     <a href="#interfaces" class="text-gray-300 hover:text-white transition-colors duration-300">Interfaces</a>
                     <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contacto</a>
                 </div>
-                 <!-- Menú Móvil (Hamburguesa) - Simplificado -->
-                <div class="sm:hidden">
+                 <div class="sm:hidden">
                     <button type="button" class="text-white p-2" aria-label="Abrir menú">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
@@ -84,9 +77,7 @@
         </nav>
     </header>
 
-    <!-- ========== MAIN CONTENT ========== -->
     <main>
-        <!-- ========== HERO SECTION ========== -->
         <section class="relative text-center py-24 sm:py-32 lg:py-40 hero-gradient">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="max-w-3xl mx-auto">
@@ -99,9 +90,9 @@
                         Desde gimnasios hasta centros médicos, Gain Wellness es la solución todo-en-uno para administrar turnos, clientes y profesionales de forma inteligente y centralizada.
                     </p>
                     <div class="fade-in mt-10 flex justify-center gap-x-4" style="animation-delay: 400ms;">
-                        <button id="open-contact-options-hero-btn" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                            Empezar ahora
-                        </button>
+                        <a href="https://app.gain-wellness.com" target="_blank" rel="noopener noreferrer" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Ingresar a la App
+                        </a>
                         <a href="#interfaces" class="border border-gray-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-gray-800 hover:border-gray-500 transition-all duration-300">
                             Ver la app
                         </a>
@@ -110,7 +101,6 @@
             </div>
         </section>
 
-        <!-- ========== FEATURES SECTION ========== -->
         <section id="features" class="py-20 sm:py-24 bg-black">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto">
@@ -120,7 +110,6 @@
                     </p>
                 </div>
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                    <!-- Feature 1 -->
                     <div class="fade-in" style="animation-delay: 100ms;">
                         <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 border border-gray-700">
                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -128,18 +117,16 @@
                         <h3 class="mt-5 text-xl font-semibold text-white">Autogestión para Clientes</h3>
                         <p class="mt-2 text-gray-400">Permite que tus clientes reserven, cancelen y gestionen sus turnos 24/7, liberando a tu personal.</p>
                     </div>
-                    <!-- Feature 2 -->
                     <div class="fade-in" style="animation-delay: 200ms;">
                         <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 border border-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
                         </div>
                         <h3 class="mt-5 text-xl font-semibold text-white">Visión para Profesionales</h3>
                         <p class="mt-2 text-gray-400">Tus especialistas tendrán su agenda y herramientas para planes o diagnósticos en un solo lugar.</p>
                     </div>
-                    <!-- Feature 3 -->
                     <div class="fade-in" style="animation-delay: 300ms;">
                         <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 border border-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
                         </div>
                         <h3 class="mt-5 text-xl font-semibold text-white">Control Administrativo</h3>
                         <p class="mt-2 text-gray-400">Gestiona clientes, turnos, créditos y pagos desde una plataforma centralizada.</p>
@@ -148,7 +135,6 @@
             </div>
         </section>
 
-        <!-- ========== INTERFACES SHOWCASE ========== -->
         <section id="interfaces" class="py-20 sm:py-24 bg-white text-black">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto">
@@ -158,7 +144,6 @@
                     </p>
                 </div>
 
-                <!-- Interfaz Código de Ingreso -->
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="order-2 md:order-1">
                         <h3 class="text-2xl font-bold">Validación por Código</h3>
@@ -181,7 +166,6 @@
                     </div>
                 </div>
 
-                <!-- Interfaz Cliente -->
                 <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="flex justify-center items-center">
                         <img src="/img/cliente.jpg" alt="Muestra de la interfaz de cliente de la app" class="app-screenshot rounded-lg shadow-2xl max-w-[250px]">
@@ -204,7 +188,6 @@
                     </div>
                 </div>
 
-                <!-- Interfaz Profesional -->
                 <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="order-2 md:order-1">
                         <h3 class="text-2xl font-bold">Interfaz del Profesional</h3>
@@ -227,7 +210,6 @@
                     </div>
                 </div>
 
-                <!-- Interfaz Administrador -->
                 <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="flex justify-center items-center">
                         <img src="/img/admin.jpg" alt="Muestra del panel de administrador de la app" class="app-screenshot rounded-lg shadow-2xl max-w-[250px]">
@@ -235,7 +217,7 @@
                     <div class="">
                         <h3 class="text-2xl font-bold">Panel del Administrador</h3>
                         <p class="mt-4 text-gray-600">
-                           El centro de control total. Desde aquí se configura todo el entorno: creación de turnos, gestión de profesionales, asignación de cargos a clientes y control de créditos.
+                            El centro de control total. Desde aquí se configura todo el entorno: creación de turnos, gestión de profesionales, asignación de cargos a clientes y control de créditos.
                         </p>
                          <ul class="mt-6 space-y-3 text-gray-700">
                             <li class="flex items-center gap-x-3">
@@ -249,7 +231,6 @@
             </div>
         </section>
 
-        <!-- ========== CONTACT/CTA SECTION ========== -->
         <section id="contact" class="bg-black py-20 sm:py-24">
              <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
                  <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">¿Listo para transformar tu gestión?</h2>
@@ -263,9 +244,34 @@
                  </div>
              </div>
         </section>
+        
+        <section id="mobile-app" class="py-20 sm:py-24 bg-gray-900 border-t border-gray-800">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">Lleva Gain Wellness contigo</h2>
+                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+                    Gestiona todo desde la palma de tu mano. Disponible próximamente en tu tienda de aplicaciones.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6">
+                    <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center w-60 opacity-60 cursor-not-allowed">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.333 12.012c0-2.48-1.55-4.286-3.762-4.286-2.273 0-3.667 1.745-3.667 1.745s-1.12-1.745-3.132-1.745c-2.073 0-3.667 1.806-3.667 4.225 0 3.428 3.012 5.713 5.394 5.713.998 0 1.933-.333 2.6-.94.667.607 1.602.94 2.6.94 2.382 0 5.394-2.285 5.394-5.652zm-6.687-5.524c.06-.06.12-.12.18-.18.88-.88 1.933-1.428 2.953-1.428.18 0 .3.06.42.12-.06.12-.12.24-.18.36-.82.94-1.662 2.324-1.662 3.55 0 .24.06.48.12.7.06.18.06.36 0 .54-.607 0-1.208-.18-1.782-.54-.18-.12-.3-.24-.42-.36-.06-.12-.12-.24-.18-.42-.547-1.07-1.148-2.686-1.57-3.61z"/></svg>
+                        <div class="text-left ml-4">
+                            <p class="text-xs text-gray-400">Próximamente en</p>
+                            <p class="text-xl font-semibold text-white">App Store</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center w-60 opacity-60 cursor-not-allowed">
+                        <svg class="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.53,10.74l-4.5-2.53L12.2,3.39a1,1,0,0,0-1.09.13L4.8,8.23,2.47,9.55a1,1,0,0,0-.47.85v4.5a1,1,0,0,0,.47.85l2.33,1.32,6.31,4.72a1,1,0,0,0,1.09.13l7.22-4.9,2.33-1.32a1,1,0,0,0,.47-.85v-4.5A1,1,0,0,0,21.53,10.74Zm-9.56,6.44L5.67,13,4,12l7.55-4.24,1.67.92,4,2.23Z"/></svg>
+                        <div class="text-left ml-4">
+                            <p class="text-xs text-gray-400">Próximamente en</p>
+                            <p class="text-xl font-semibold text-white">Google Play</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <!-- ========== FOOTER ========== -->
     <footer class="bg-gray-900 border-t border-gray-800">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="md:flex md:justify-between">
@@ -305,14 +311,10 @@
         </div>
     </footer>
 
-    <!-- ========== FLOATING WHATSAPP BUTTON ========== -->
-    <!-- Reemplaza +549XXXXXXXXXX con tu número de WhatsApp completo, incluyendo el código de país -->
     <a href="https://wa.me/+5492932592219" target="_blank" rel="noopener noreferrer" class="fixed bottom-5 right-5 z-30 ">
         <img class="h-20 w-auto" src="/img/WhatsApp.svg.webp" alt="WhatsApp">
     </a>
 
-    <!-- ========== MODALS ========== -->
-    <!-- Modal Opciones de Contacto -->
     <div id="contact-options-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
         <div class="bg-gray-900 border border-gray-700 rounded-lg shadow-xl max-w-sm w-full">
             <div class="p-5 border-b border-gray-700 flex justify-between items-center">
@@ -323,7 +325,6 @@
                 <a href="mailto:gain_wellness@hotmail.com" class="w-full text-center bg-white text-black font-semibold px-6 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300">
                     Enviar Email
                 </a>
-                <!-- Reemplaza +549XXXXXXXXXX con tu número de WhatsApp completo, incluyendo el código de país -->
                 <a href="https://wa.me/+5492932592219" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-green-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-600 transition-all duration-300">
                     Chatear por WhatsApp
                 </a>
@@ -331,7 +332,6 @@
         </div>
     </div>
     
-    <!-- Modal Política de Privacidad -->
     <div id="privacy-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
         <div class="bg-gray-900 border border-gray-700 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
             <div class="p-5 border-b border-gray-700 flex justify-between items-center sticky top-0 bg-gray-900">
@@ -359,13 +359,12 @@
                 <ul class="list-disc list-inside pl-4 space-y-2">
                     <li><strong>Por Ley o para Proteger Derechos:</strong> Si creemos que la divulgación es necesaria para responder a un proceso legal, para investigar o remediar posibles violaciones de nuestras políticas, o para proteger los derechos, la propiedad y la seguridad de otros.</li>
                     <li><strong>Proveedores de Servicios:</strong> Podemos compartir su información con terceros que realizan servicios para nosotros o en nuestro nombre, incluido el procesamiento de pagos, el análisis de datos y el servicio al cliente.</li>
-                 </ul>
+                   </ul>
                 <p class="pt-4">Si tiene preguntas o comentarios sobre esta Política de Privacidad, contáctenos en: gain_wellness@hotmail.com</p>
             </div>
         </div>
     </div>
 
-    <!-- Modal Términos y Condiciones -->
     <div id="terms-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
         <div class="bg-gray-900 border border-gray-700 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
             <div class="p-5 border-b border-gray-700 flex justify-between items-center sticky top-0 bg-gray-900">
@@ -398,7 +397,6 @@
 
         const openPrivacyLink = document.getElementById('open-privacy-link');
         const openTermsLink = document.getElementById('open-terms-link');
-        const openContactOptionsHeroBtn = document.getElementById('open-contact-options-hero-btn');
         const openContactOptionsMainBtn = document.getElementById('open-contact-options-main-btn');
 
         const closePrivacyModalBtn = document.getElementById('close-privacy-modal');
@@ -422,7 +420,6 @@
         // Event Listeners to open modals
         openPrivacyLink.addEventListener('click', (e) => { e.preventDefault(); openModal(privacyModal); });
         openTermsLink.addEventListener('click', (e) => { e.preventDefault(); openModal(termsModal); });
-        openContactOptionsHeroBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(contactOptionsModal); });
         openContactOptionsMainBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(contactOptionsModal); });
         
         // Event Listeners to close modals
