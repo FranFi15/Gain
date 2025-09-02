@@ -401,62 +401,55 @@
         </div>
     </div>
     
-    <script>
-        // --- Modal Handling ---
-        const loginOptionsModal = document.getElementById('login-options-modal');
-        const openLoginOptionsBtn = document.getElementById('open-login-options-btn');
-        const closeLoginOptionsModalBtn = document.getElementById('close-login-options-modal');
+     <script>
+        // --- SCRIPT MODIFICADO ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactOptionsModal = document.getElementById('contact-options-modal');
+            const openContactOptionsMainBtn = document.getElementById('open-contact-options-main-btn');
+            const closeContactOptionsModalBtn = document.getElementById('close-contact-options-modal');
 
-        const contactOptionsModal = document.getElementById('contact-options-modal');
-        const openContactOptionsMainBtn = document.getElementById('open-contact-options-main-btn');
-        const closeContactOptionsModalBtn = document.getElementById('close-contact-options-modal');
+            const privacyModal = document.getElementById('privacy-modal');
+            const openPrivacyLink = document.getElementById('open-privacy-link');
+            const closePrivacyModalBtn = document.getElementById('close-privacy-modal');
 
-        const privacyModal = document.getElementById('privacy-modal');
-        const openPrivacyLink = document.getElementById('open-privacy-link');
-        const closePrivacyModalBtn = document.getElementById('close-privacy-modal');
+            const termsModal = document.getElementById('terms-modal');
+            const openTermsLink = document.getElementById('open-terms-link');
+            const closeTermsModalBtn = document.getElementById('close-terms-modal');
 
-        const termsModal = document.getElementById('terms-modal');
-        const openTermsLink = document.getElementById('open-terms-link');
-        const closeTermsModalBtn = document.getElementById('close-terms-modal');
-
-        function openModal(modal) {
-            if (modal) {
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
+            function openModal(modal) {
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
             }
-        }
 
-        function closeModal(modal) {
-            if (modal) {
-                modal.classList.add('hidden');
-                document.body.style.overflow = '';
+            function closeModal(modal) {
+                if (modal) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
             }
-        }
 
-        // Event Listeners
-        openLoginOptionsBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(loginOptionsModal); });
-        closeLoginOptionsModalBtn.addEventListener('click', () => closeModal(loginOptionsModal));
-        loginOptionsModal.addEventListener('click', (e) => { if (e.target === loginOptionsModal) closeModal(loginOptionsModal); });
+            // Event Listeners
+            openContactOptionsMainBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(contactOptionsModal); });
+            closeContactOptionsModalBtn.addEventListener('click', () => closeModal(contactOptionsModal));
+            contactOptionsModal.addEventListener('click', (e) => { if (e.target === contactOptionsModal) closeModal(contactOptionsModal); });
+            
+            openPrivacyLink.addEventListener('click', (e) => { e.preventDefault(); openModal(privacyModal); });
+            closePrivacyModalBtn.addEventListener('click', () => closeModal(privacyModal));
+            privacyModal.addEventListener('click', (e) => { if (e.target === privacyModal) closeModal(privacyModal); });
 
-        openContactOptionsMainBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(contactOptionsModal); });
-        closeContactOptionsModalBtn.addEventListener('click', () => closeModal(contactOptionsModal));
-        contactOptionsModal.addEventListener('click', (e) => { if (e.target === contactOptionsModal) closeModal(contactOptionsModal); });
-        
-        openPrivacyLink.addEventListener('click', (e) => { e.preventDefault(); openModal(privacyModal); });
-        closePrivacyModalBtn.addEventListener('click', () => closeModal(privacyModal));
-        privacyModal.addEventListener('click', (e) => { if (e.target === privacyModal) closeModal(privacyModal); });
-
-        openTermsLink.addEventListener('click', (e) => { e.preventDefault(); openModal(termsModal); });
-        closeTermsModalBtn.addEventListener('click', () => closeModal(termsModal));
-        termsModal.addEventListener('click', (e) => { if (e.target === termsModal) closeModal(termsModal); });
-        
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeModal(loginOptionsModal);
-                closeModal(contactOptionsModal);
-                closeModal(privacyModal);
-                closeModal(termsModal);
-            }
+            openTermsLink.addEventListener('click', (e) => { e.preventDefault(); openModal(termsModal); });
+            closeTermsModalBtn.addEventListener('click', () => closeModal(termsModal));
+            termsModal.addEventListener('click', (e) => { if (e.target === termsModal) closeModal(termsModal); });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal(contactOptionsModal);
+                    closeModal(privacyModal);
+                    closeModal(termsModal);
+                }
+            });
         });
     </script>
 </body>
