@@ -33,8 +33,8 @@
         .iphone-frame {
             position: relative;
             width: 100%;
-            max-width: 280px; /* Ajusta el tamaño máximo del teléfono */
-            aspect-ratio: 393 / 852; /* Proporción de un iPhone 15 Pro */
+            max-width: 280px;
+            aspect-ratio: 393 / 852;
             background: #1c1c1e;
             border-radius: 50px;
             padding: 12px;
@@ -83,26 +83,31 @@
                     <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contacto</a>
                 </div>
                 <div class="sm:hidden">
-                    <button type="button" class="text-white p-2" aria-label="Abrir menú">
+                    <button id="menu-btn" type="button" class="text-white p-2" aria-label="Abrir menú">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                     </button>
                 </div>
+            </div>
+            <div id="mobile-menu" class="hidden sm:hidden pb-4">
+                <a href="#features" class="block text-gray-300 hover:text-white py-2">Características</a>
+                <a href="#interfaces" class="block text-gray-300 hover:text-white py-2">Interfaces</a>
+                <a href="#contact" class="block text-gray-300 hover:text-white py-2">Contacto</a>
             </div>
         </nav>
     </header>
 
     <main>
-        <section class="relative text-center py-24 sm:py-32 lg:py-40 hero-gradient">
+        <section class="relative text-center py-20 sm:py-32 lg:py-40 hero-gradient">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-8xl mx-auto">
-                    <img class="h-60 w-90 mx-auto " src="./img/logo.png" alt="Logo de Gain Wellness">
-                    <h1 class="fade-in text-4xl sm:text-5xl lg:text-5xl font-extrabold text-white mt-4" style="animation-delay: 200ms;">
+                <div class="max-w-3xl mx-auto">
+                    <img class="h-40 sm:h-60 w-auto mx-auto" src="./img/logo.png" alt="Logo de Gain Wellness">
+                    <h1 class="fade-in text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white mt-4" style="animation-delay: 200ms;">
                         Optimiza tu negocio. Empodera a tus clientes.
                     </h1>
-                    <p class="fade-in max-w-2xl mx-auto mt-6 text-lg text-gray-300" style="animation-delay: 300ms;">
+                    <p class="fade-in max-w-2xl mx-auto mt-6 text-md sm:text-lg text-gray-300" style="animation-delay: 300ms;">
                         La solución todo-en-uno para administrar turnos, clientes y profesionales de forma inteligente y centralizada.
                     </p>
-                    <div class="fade-in mt-10 flex justify-center gap-x-4" style="animation-delay: 400ms;">
+                    <div class="fade-in mt-10 flex flex-col sm:flex-row justify-center gap-4" style="animation-delay: 400ms;">
                         <a href="#mobile-app" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
                             Ir a la App
                         </a>
@@ -150,7 +155,7 @@
 
         <section id="interfaces" class="py-20 sm:py-24 bg-white text-black">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-8xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl font-bold tracking-tight sm:text-5xl">Una experiencia de usuario impecable</h2>
                     <p class="mt-4 text-lg text-gray-600">
                         Interfaces limpias e intuitivas diseñadas para cada rol.
@@ -167,39 +172,19 @@
                         </div>
                     </div>
                     <div>
-                        <h3 class="text-3xl font-bold">Interfaz del Cliente</h3>
+                        <h3 class="text-2xl sm:text-3xl font-bold">Interfaz del Cliente</h3>
                         <p class="mt-4 text-gray-600">
-                            El poder en manos de tus clientes. Podrán ver la disponibilidad en tiempo real, reservar su próximo turno y revisar su historial de turnos. Todo desde la comodidad de su móvil.
+                            El poder en manos de tus clientes. Podrán ver la disponibilidad en tiempo real, reservar su próximo turno y revisar su historial. Todo desde la comodidad de su móvil.
                         </p>
-                        <ul class="mt-6 space-y-3 text-gray-700">
-                            <li class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" /></svg>
-                                Autogestión de turnos
-                            </li>
-                            <li class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" /></svg>
-                                Gestión de créditos
-                            </li>
-                        </ul>
                     </div>
                 </div>
 
                 <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     <div class="order-2 md:order-1">
-                        <h3 class="text-3xl font-bold">Interfaz del Profesional</h3>
+                        <h3 class="text-2xl sm:text-3xl font-bold">Interfaz del Profesional</h3>
                         <p class="mt-4 text-gray-600">
-                            Una agenda inteligente que organiza el día a día. Los profesionales pueden ver sus turnos, acceder a la información del cliente y adjuntar planes o diagnósticos de forma segura y privada.
+                            Una agenda inteligente que organiza el día a día. Los profesionales pueden ver sus turnos y acceder a la información del cliente de forma segura.
                         </p>
-                        <ul class="mt-6 space-y-3 text-gray-700">
-                            <li class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" /></svg>
-                                Agenda y vista de clientes por turno
-                            </li>
-                            <li class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" /></svg>
-                                Creación de planes/diagnósticos
-                            </li>
-                        </ul>
                     </div>
                     <div class="order-1 md:order-2 flex justify-center items-center">
                          <div class="iphone-frame">
@@ -220,34 +205,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="">
-                        <h3 class="text-3xl font-bold">Panel del Administrador</h3>
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold">Panel del Administrador</h3>
                         <p class="mt-4 text-gray-600">
-                            El centro de control total. Desde aquí se configura todo el entorno: creación de turnos, gestión de profesionales, asignación de cargos a clientes y control de créditos.
+                            El centro de control total. Desde aquí se configura todo el entorno: creación de turnos, gestión de profesionales y control de créditos.
                         </p>
-                        <ul class="mt-6 space-y-3 text-gray-700">
-                            <li class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" /></svg>
-                                Gestión completa del entorno
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="contact" class="bg-black py-20 sm:py-24">
-             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                 <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">¿Listo para transformar tu gestión?</h2>
-                 <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-                     Ponete en contacto con nosotros para una demostración personalizada y descubre cómo Gain Wellness puede adaptarse a tus necesidades.
-                 </p>
-                 <div class="mt-10">
-                     <button id="open-contact-options-main-btn" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                         Solicitar tu app
-                     </button>
-                 </div>
-             </div>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">¿Listo para transformar tu gestión?</h2>
+                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+                    Ponete en contacto con nosotros para una demostración personalizada.
+                </p>
+                <div class="mt-10">
+                    <button id="open-contact-options-main-btn" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Solicitar tu app
+                    </button>
+                </div>
+            </div>
         </section>
         
         <section id="mobile-app" class="py-20 sm:py-24 bg-gray-900 border-t border-gray-800">
@@ -404,6 +383,12 @@
      <script>
         // --- SCRIPT MODIFICADO ---
         document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
             const contactOptionsModal = document.getElementById('contact-options-modal');
             const openContactOptionsMainBtn = document.getElementById('open-contact-options-main-btn');
             const closeContactOptionsModalBtn = document.getElementById('close-contact-options-modal');
