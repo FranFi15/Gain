@@ -13,17 +13,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/icono-noti.png" type="image/png">
 
-   <style>
-        body { font-family: 'Inter', sans-serif; background-color: #000000; color: #FFFFFF; scroll-behavior: smooth; }
-        .hero-gradient { background: radial-gradient(ellipse at top, #1a1a1a 10%, #000000 70%); }
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: radial-gradient(ellipse at top, #1a1a1a 10%, #000000 70%);
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
-        .iphone-frame { position: relative; width: 100%; max-width: 280px; aspect-ratio: 393 / 852; background: #1c1c1e; border-radius: 50px; padding: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 1px 2px rgba(255,255,255,0.1); }
-        .iphone-screen { width: 100%; height: 100%; background: #000; border-radius: 38px; overflow: hidden; }
-        .iphone-screenshot { width: 100%; height: 100%; object-fit: cover; }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .iphone-frame {
+            position: relative;
+            width: 100%;
+            max-width: 280px;
+            aspect-ratio: 393 / 852;
+            background: #1c1c1e;
+            border-radius: 50px;
+            padding: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 1px 2px rgba(255,255,255,0.1);
+        }
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 38px;
+            overflow: hidden;
+        }
+        .iphone-screenshot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         .modal-scrollbar::-webkit-scrollbar { width: 8px; }
         .modal-scrollbar::-webkit-scrollbar-track { background: #2d3748; }
         .modal-scrollbar::-webkit-scrollbar-thumb { background: #718096; border-radius: 4px; }
@@ -115,88 +143,54 @@
 
         <section id="interfaces" class="py-20 sm:py-24 bg-white text-black">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-8xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto">
                     <h2 class="text-3xl font-bold tracking-tight sm:text-5xl">Una experiencia de usuario impecable</h2>
                     <p class="mt-4 text-lg text-gray-600">
                         Interfaces limpias e intuitivas diseñadas para cada rol.
                     </p>
                 </div>
 
-                <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-x-12 items-center">
-                    <div class="flex justify-center items-center">
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-x-8 lg:gap-x-12">
+                    
+                    <div class="flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold mb-6">Interfaz del Cliente</h3>
                         <div class="iphone-frame">
                             <div class="iphone-notch"></div>
                             <div class="iphone-screen">
                                 <img src="./img/cliente.jpg" alt="Muestra de la interfaz de cliente" class="iphone-screenshot">
                             </div>
                         </div>
-                    </div>
-                    <div>
-                        <h3 class="text-3xl font-bold">Interfaz del Cliente</h3>
-                        <p class="mt-4 text-gray-600">
-                            El poder en manos de tus clientes. Podrán ver la disponibilidad en tiempo real, reservar su próximo turno y revisar su historial de turnos. Todo desde la comodidad de su móvil.
+                        <p class="mt-6 max-w-xs text-gray-600">
+                            El poder en manos de tus clientes para ver la disponibilidad, reservar y revisar su historial.
                         </p>
-                        <ul class="mt-6 space-y-3 text-gray-700">
-                            <li class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" /></svg>
-                                Autogestión de turnos
-                            </li>
-                            <li class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" /></svg>
-                                Gestión de créditos
-                            </li>
-                        </ul>
                     </div>
-                </div>
 
-                <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-x-12 items-center">
-                    <div class="order-2 md:order-1">
-                        <h3 class="text-3xl font-bold">Interfaz del Profesional</h3>
-                        <p class="mt-4 text-gray-600">
-                            Una agenda inteligente que organiza el día a día. Los profesionales pueden ver sus turnos, acceder a la información del cliente y adjuntar planes o diagnósticos de forma segura y privada.
-                        </p>
-                        <ul class="mt-6 space-y-3 text-gray-700">
-                            <li class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" /></svg>
-                                Agenda y vista de clientes por turno
-                            </li>
-                            <li class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" /></svg>
-                                Creación de planes/diagnósticos
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="order-1 md:order-2 flex justify-center items-center">
-                           <div class="iphone-frame">
+                    <div class="flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold mb-6">Interfaz del Profesional</h3>
+                        <div class="iphone-frame">
                             <div class="iphone-notch"></div>
                             <div class="iphone-screen">
                                 <img src="./img/profe.jpg" alt="Muestra de la interfaz de profesional" class="iphone-screenshot">
                             </div>
                         </div>
+                        <p class="mt-6 max-w-xs text-gray-600">
+                            Una agenda inteligente que organiza el día a día para ver turnos y acceder a la información del cliente.
+                        </p>
                     </div>
-                </div>
 
-                <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-y-16 md:gap-x-12 items-center">
-                    <div class="flex justify-center items-center">
+                    <div class="flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold mb-6">Panel del Administrador</h3>
                         <div class="iphone-frame">
                             <div class="iphone-notch"></div>
                             <div class="iphone-screen">
                                 <img src="./img/admin.jpg" alt="Muestra del panel de administrador" class="iphone-screenshot">
                             </div>
                         </div>
-                    </div>
-                    <div class="">
-                        <h3 class="text-3xl font-bold">Panel del Administrador</h3>
-                        <p class="mt-4 text-gray-600">
-                            El centro de control total. Desde aquí se configura todo el entorno: creación de turnos, gestión de profesionales, asignación de cargos a clientes y control de créditos.
+                        <p class="mt-6 max-w-xs text-gray-600">
+                            El centro de control total para configurar turnos, gestionar profesionales y controlar créditos.
                         </p>
-                        <ul class="mt-6 space-y-3 text-gray-700">
-                            <li class="flex items-center gap-x-3">
-                                <svg class="w-5 h-5 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" /></svg>
-                                Gestión completa del entorno
-                            </li>
-                        </ul>
                     </div>
+
                 </div>
             </div>
         </section>
