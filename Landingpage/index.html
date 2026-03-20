@@ -199,19 +199,26 @@
 
         <section id="pricing" class="py-20 sm:py-24 bg-black border-t border-gray-900">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="text-center max-w-3xl mx-auto mb-10">
                     <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">Planes a tu medida</h2>
                     <p class="mt-4 text-lg text-gray-400">
                         Luego de 20 días de prueba, elige el plan que mejor se adapte al tamaño actual de tu negocio. Sin costos ocultos.
                     </p>
                 </div>
 
+                <div class="flex justify-center mb-12">
+                    <div class="relative flex bg-gray-900 p-1 rounded-full border border-gray-700">
+                        <button id="btn-argentina" class="relative w-32 py-2 text-sm font-semibold rounded-full bg-gray-700 text-white shadow-sm transition-all duration-300">Argentina</button>
+                        <button id="btn-internacional" class="relative w-32 py-2 text-sm font-semibold rounded-full text-gray-400 hover:text-white transition-all duration-300">Internacional</button>
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     <div class="flex flex-col p-8 rounded-2xl bg-gray-900 border border-gray-600 relative overflow-hidden shadow-2xl shadow-gray-900/50">
                         <h3 class="text-xl font-semibold text-gray-300">Plan Inicial</h3>
                         <div class="mt-4 flex items-baseline">
-                            <span class="text-4xl font-bold tracking-tight text-white">$30.000</span>
-                            <span class="ml-1 text-xl font-semibold text-gray-500">ARS /mes</span>
+                            <span id="price-inicial" class="text-4xl font-bold tracking-tight text-white">$30.000</span>
+                            <span id="currency-inicial" class="ml-1 text-xl font-semibold text-gray-500">ARS /mes</span>
                         </div>
                         <p class="mt-2 text-sm text-gray-400">Ideal para centros en crecimiento.</p>
                         
@@ -230,8 +237,8 @@
                         
                         <h3 class="text-xl font-semibold text-white">Plan Pro</h3>
                         <div class="mt-4 flex items-baseline">
-                            <span class="text-4xl font-bold tracking-tight text-white">$40.000</span>
-                            <span class="ml-1 text-xl font-semibold text-gray-500">ARS /mes</span>
+                            <span id="price-pro" class="text-4xl font-bold tracking-tight text-white">$50.000</span>
+                            <span id="currency-pro" class="ml-1 text-xl font-semibold text-gray-500">ARS /mes</span>
                         </div>
                         <p class="mt-2 text-sm text-gray-400">Para negocios consolidados.</p>
                         
@@ -244,7 +251,6 @@
                             </li>
                         </ul>
                     </div>
-                   
                 </div>
             </div>
         </section>
@@ -256,7 +262,7 @@
                     Ponete en contacto con nosotros para una demostración personalizada.
                 </p>
                 <div class="mt-10">
-                    <a  href="https://wa.me/+5492932592219" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <a href="#" id="open-contact-options-main-btn" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
                         Solicitar tu app
                     </a>
                 </div>
@@ -470,8 +476,40 @@
                     closeModal(termsModal);
                 }
             });
+
+            // --- LÓGICA DE PRECIOS INTERNACIONALES ---
+            const btnArgentina = document.getElementById('btn-argentina');
+            const btnInternacional = document.getElementById('btn-internacional');
+            const priceInicial = document.getElementById('price-inicial');
+            const currencyInicial = document.getElementById('currency-inicial');
+            const pricePro = document.getElementById('price-pro');
+            const currencyPro = document.getElementById('currency-pro');
+
+            // Función para actualizar estilos de los botones
+            function setToggleStyles(activeBtn, inactiveBtn) {
+                activeBtn.classList.add('bg-gray-700', 'text-white', 'shadow-sm');
+                activeBtn.classList.remove('text-gray-400', 'hover:text-white');
+                
+                inactiveBtn.classList.remove('bg-gray-700', 'text-white', 'shadow-sm');
+                inactiveBtn.classList.add('text-gray-400', 'hover:text-white');
+            }
+
+            btnArgentina.addEventListener('click', () => {
+                setToggleStyles(btnArgentina, btnInternacional);
+                priceInicial.textContent = '$30.000';
+                currencyInicial.textContent = 'ARS /mes';
+                pricePro.textContent = '$40.000';
+                currencyPro.textContent = 'ARS /mes';
+            });
+
+            btnInternacional.addEventListener('click', () => {
+                setToggleStyles(btnInternacional, btnArgentina);
+                priceInicial.textContent = '$22';
+                currencyInicial.textContent = 'USD /mes';
+                pricePro.textContent = '$29';
+                currencyPro.textContent = 'USD /mes';
+            });
         });
     </script>
 </body>
-
 </html>
