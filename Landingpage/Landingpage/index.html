@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gain Wellness es la solución todo-en-uno para gimnasios y centros médicos. Gestiona turnos, clientes y profesionales de forma inteligente y centralizada.">
+    
+    <title>Gain Wellness - Gestiona tus Turnos Fácilmente</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/icono-noti.png" type="image/png">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #FFFFFF;
+            scroll-behavior: smooth;
+        }
+        .hero-gradient {
+            background: radial-gradient(ellipse at top, #1a1a1a 10%, #000000 70%);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .iphone-frame {
+            position: relative;
+            width: 100%;
+            max-width: 280px;
+            aspect-ratio: 393 / 852;
+            background: #1c1c1e;
+            border-radius: 50px;
+            padding: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 1px 2px rgba(255,255,255,0.1);
+        }
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 38px;
+            overflow: hidden;
+        }
+        .iphone-screenshot {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .modal-scrollbar::-webkit-scrollbar { width: 8px; }
+        .modal-scrollbar::-webkit-scrollbar-track { background: #2d3748; }
+        .modal-scrollbar::-webkit-scrollbar-thumb { background: #718096; border-radius: 4px; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="sticky top-0 z-40 w-full bg-black bg-opacity-80 backdrop-blur-md">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="flex-shrink-0">
+                    <img class="h-12 w-auto" src="./img/logo.png" alt="Logo de Gain Wellness">
+                </a>
+                <div class="hidden sm:flex sm:items-center sm:space-x-8">
+                    <a href="#features" class="text-gray-300 hover:text-white transition-colors duration-300">Características</a>
+                    <a href="#interfaces" class="text-gray-300 hover:text-white transition-colors duration-300">Interfaces</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-white transition-colors duration-300">Precios</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contacto</a>
+                </div>
+                <div class="sm:hidden">
+                    <button id="menu-btn" type="button" class="text-white p-2" aria-label="Abrir menú">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden sm:hidden pb-4">
+                <a href="#features" class="block text-gray-300 hover:text-white py-2">Características</a>
+                <a href="#interfaces" class="block text-gray-300 hover:text-white py-2">Interfaces</a>
+                <a href="#pricing" class="block text-gray-300 hover:text-white py-2">Precios</a>
+                <a href="#contact" class="block text-gray-300 hover:text-white py-2">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="relative text-center py-20 sm:py-32 lg:py-40 hero-gradient">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto">
+                    <img class="h-40 sm:h-60 w-auto mx-auto" src="./img/logo.png" alt="Logo de Gain Wellness">
+                    <h1 class="fade-in text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white mt-4" style="animation-delay: 200ms;">
+                        Optimiza tu negocio. Empodera a tus clientes.
+                    </h1>
+                    <p class="fade-in max-w-2xl mx-auto mt-6 text-md sm:text-lg text-gray-300" style="animation-delay: 300ms;">
+                        La solución todo-en-uno para administrar turnos, clientes y profesionales de forma inteligente y centralizada.
+                    </p>
+                    <div class="fade-in mt-10 flex flex-col sm:flex-row justify-center gap-4" style="animation-delay: 400ms;">
+                        <a href="#mobile-app" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                            Ir a la App
+                        </a>
+                        <a href="#interfaces" class="border border-gray-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-gray-800 hover:border-gray-500 transition-all duration-300">
+                            Ver Interfaces
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-20 sm:py-24 bg-black">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">Una plataforma, control total.</h2>
+                    <p class="mt-4 text-lg text-gray-400">
+                        Diseñada para ser tan versátil como tu negocio, nuestra app simplifica la complejidad de la gestión diaria.
+                    </p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div class="fade-in" style="animation-delay: 100ms;">
+                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 border border-gray-700">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        </div>
+                        <h3 class="mt-5 text-xl font-semibold text-white">Autogestión para Clientes</h3>
+                        <p class="mt-2 text-gray-400">Permite que tus clientes reserven, cancelen y gestionen sus turnos 24/7, liberando a tu personal.</p>
+                    </div>
+                    <div class="fade-in" style="animation-delay: 200ms;">
+                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 border border-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                        </div>
+                        <h3 class="mt-5 text-xl font-semibold text-white">Visión para Profesionales</h3>
+                        <p class="mt-2 text-gray-400">Tus especialistas tendrán su agenda y herramientas para planes o diagnósticos en un solo lugar.</p>
+                    </div>
+                    <div class="fade-in" style="animation-delay: 300ms;">
+                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 border border-gray-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                        </div>
+                        <h3 class="mt-5 text-xl font-semibold text-white">Control Administrativo</h3>
+                        <p class="mt-2 text-gray-400">Gestiona clientes, turnos, créditos y pagos desde una plataforma centralizada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="interfaces" class="py-20 sm:py-24 bg-white text-black">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="text-3xl font-bold tracking-tight sm:text-5xl">Una experiencia de usuario impecable</h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Interfaces limpias e intuitivas diseñadas para cada rol.
+                    </p>
+                </div>
+
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-x-8 lg:gap-x-12">
+                    
+                    <div class="flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold mb-6">Interfaz del Cliente</h3>
+                        <div class="iphone-frame">
+                            <div class="iphone-notch"></div>
+                            <div class="iphone-screen">
+                                <img src="./img/cliente.jpg" alt="Muestra de la interfaz de cliente" class="iphone-screenshot">
+                            </div>
+                        </div>
+                        <p class="mt-6 max-w-xs text-gray-600">
+                            El poder en manos de tus clientes para ver la disponibilidad, reservar y revisar su historial.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold mb-6">Interfaz del Profesional</h3>
+                        <div class="iphone-frame">
+                            <div class="iphone-notch"></div>
+                            <div class="iphone-screen">
+                                <img src="./img/profe.jpg" alt="Muestra de la interfaz de profesional" class="iphone-screenshot">
+                            </div>
+                        </div>
+                        <p class="mt-6 max-w-xs text-gray-600">
+                            Una agenda inteligente que organiza el día a día para ver turnos y acceder a la información del cliente.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center">
+                        <h3 class="text-2xl font-bold mb-6">Panel del Administrador</h3>
+                        <div class="iphone-frame">
+                            <div class="iphone-notch"></div>
+                            <div class="iphone-screen">
+                                <img src="./img/admin.jpg" alt="Muestra del panel de administrador" class="iphone-screenshot">
+                            </div>
+                        </div>
+                        <p class="mt-6 max-w-xs text-gray-600">
+                            El centro de control total para configurar turnos, gestionar profesionales y controlar créditos.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-20 sm:py-24 bg-black border-t border-gray-900">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">Planes a tu medida</h2>
+                    <p class="mt-4 text-lg text-gray-400">
+                        Luego de 20 días de prueba, elige el plan que mejor se adapte al tamaño actual de tu negocio. Sin costos ocultos.
+                    </p>
+                </div>
+
+                <div class="flex justify-center mb-12">
+                    <div class="relative flex bg-gray-900 p-1 rounded-full border border-gray-700">
+                        <button id="btn-argentina" class="relative w-32 py-2 text-sm font-semibold rounded-full bg-gray-700 text-white shadow-sm transition-all duration-300">Argentina</button>
+                        <button id="btn-internacional" class="relative w-32 py-2 text-sm font-semibold rounded-full text-gray-400 hover:text-white transition-all duration-300">Internacional</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="flex flex-col p-8 rounded-2xl bg-gray-900 border border-gray-600 relative overflow-hidden shadow-2xl shadow-gray-900/50">
+                        <h3 class="text-xl font-semibold text-gray-300">Plan Inicial</h3>
+                        <div class="mt-4 flex items-baseline">
+                            <span id="price-inicial" class="text-4xl font-bold tracking-tight text-white">$30.000</span>
+                            <span id="currency-inicial" class="ml-1 text-xl font-semibold text-gray-500">ARS /mes</span>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-400">Ideal para centros en crecimiento.</p>
+                        
+                        <div class="my-8 h-px bg-gray-800"></div>
+                        
+                        <ul role="list" class="space-y-4 flex-1">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                <span class="ml-3 text-gray-300">Hasta <strong>100 clientes activos</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col p-8 rounded-2xl bg-gray-900 border border-gray-600 relative overflow-hidden shadow-2xl shadow-gray-900/50">
+                        <div class="absolute top-0 right-0 -mt-2 -mr-2 w-24 h-24 bg-white opacity-5 rounded-full blur-xl"></div>
+                        
+                        <h3 class="text-xl font-semibold text-white">Plan Pro</h3>
+                        <div class="mt-4 flex items-baseline">
+                            <span id="price-pro" class="text-4xl font-bold tracking-tight text-white">$50.000</span>
+                            <span id="currency-pro" class="ml-1 text-xl font-semibold text-gray-500">ARS /mes</span>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-400">Para negocios consolidados.</p>
+                        
+                        <div class="my-8 h-px bg-gray-700"></div>
+                        
+                        <ul role="list" class="space-y-4 flex-1">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                <span class="ml-3 text-white">Más de <strong>100 clientes activos</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="bg-black py-20 sm:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">¿Listo para transformar tu gestión?</h2>
+                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+                    Ponete en contacto con nosotros para una demostración personalizada.
+                </p>
+                <div class="mt-10">
+                    <a href="#" id="open-contact-options-main-btn" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        Solicitar tu app
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="mobile-app" class="py-20 sm:py-24 bg-gray-900 border-t border-gray-800">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">Lleva Gain Wellness contigo</h2>
+                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
+                    Gestiona todo desde la palma de tu mano. Disponible ahora en tu tienda de aplicaciones y la web.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6">
+                    <a href="https://app.gain-wellness.com/clients" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center w-60 hover:bg-gray-700 transition-colors">
+                        <img src="./img/web.png" class="h-12 w-auto" alt="Web App">
+                        <div class="text-left ml-4">
+                            <p class="text-xs text-gray-400">Utilizar en</p>
+                            <p class="text-xl font-semibold text-white">Web App</p>
+                        </div>
+                    </a>
+                    <a href="https://apps.apple.com/ar/app/gain-wellness/id6749487969" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center w-60 hover:bg-gray-700 transition-colors">
+                        <img src="./img/appstore.png" class="h-12 w-auto" alt="App Store">
+                        <div class="text-left ml-4">
+                            <p class="text-xs text-gray-400">Descargar en</p>
+                            <p class="text-xl font-semibold text-white">App Store</p>
+                        </div>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.franfi15.MOVILAPP&hl=es_AR" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center w-60 hover:bg-gray-700 transition-colors">
+                        <img src="./img/playstore.png" alt="Play Store" class="h-12 w-auto">
+                        <div class="text-left ml-4">
+                            <p class="text-xs text-gray-400">Descargar en</p>
+                            <p class="text-xl font-semibold text-white">Google Play</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="md:flex md:justify-between">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="flex items-center">
+                        <img src="./img/logo.png" class="h-10 mr-3" alt="Logo de Gain Wellness" />
+                    </a>
+                    <p class="mt-4 text-gray-400 max-w-xs">La solución definitiva para la gestión de turnos y clientes.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-white uppercase">Recursos</h2>
+                        <ul class="text-gray-400">
+                            <li class="mb-4"><a href="#features" class="hover:underline">Características</a></li>
+                            <li class="mb-4"><a href="#interfaces" class="hover:underline">Interfaces</a></li>
+                            <li><a href="#pricing" class="hover:underline">Precios</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-white uppercase">Síguenos</h2>
+                        <ul class="text-gray-400">
+                            <li class="mb-4"><a href="https://www.instagram.com/gain.wellness/" class="hover:underline ">Instagram</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="mb-6 text-sm font-semibold text-white uppercase">Legal</h2>
+                        <ul class="text-gray-400">
+                            <li class="mb-4"><a href="#" id="open-privacy-link" class="hover:underline cursor-pointer">Política de Privacidad</a></li>
+                            <li><a href="#" id="open-terms-link" class="hover:underline cursor-pointer">Términos y Condiciones</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-6 border-gray-700 sm:mx-auto lg:my-8" />
+            <div class="text-center text-gray-500">
+                <span class="text-sm">&copy; 2025 <a href="#" class="hover:underline">Gain Wellness™</a>. Todos los derechos reservados.</span>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/+5492932592219" target="_blank" rel="noopener noreferrer" class="fixed bottom-5 right-5 z-30 ">
+        <img class="h-20 w-auto" src="./img/WhatsApp.svg.webp" alt="WhatsApp">
+    </a>
+
+    <div id="contact-options-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-gray-900 border border-gray-700 rounded-lg shadow-xl max-w-sm w-full">
+            <div class="p-5 border-b border-gray-700 flex justify-between items-center">
+                <h3 class="text-xl font-semibold text-white">Contactar</h3>
+                <button id="close-contact-options-modal" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div class="p-6 flex flex-col space-y-4">
+                <a href="mailto:gain_wellness@hotmail.com" class="w-full text-center bg-white text-black font-semibold px-6 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300">
+                    Enviar Email
+                </a>
+                <a href="https://wa.me/+5492932592219" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-green-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-600 transition-all duration-300">
+                    Chatear por WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="privacy-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-gray-900 border border-gray-700 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
+            <div class="p-5 border-b border-gray-700 flex justify-between items-center sticky top-0 bg-gray-900">
+                <h3 class="text-xl font-semibold text-white">Política de Privacidad</h3>
+                <button id="close-privacy-modal" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div class="p-6 text-gray-300 space-y-4 overflow-y-auto modal-scrollbar">
+                <p><strong>Última actualización:</strong> 22 de Julio de 2025</p>
+                <p>Bienvenido a Gain Wellness. Su privacidad es de suma importancia para nosotros. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y salvaguardamos su información cuando utiliza nuestra aplicación móvil y sitio web.</p>
+                <h4 class="text-lg font-semibold text-white pt-2">1. Información que Recopilamos</h4>
+                <ul class="list-disc list-inside pl-4 space-y-2">
+                    <li><strong>Datos Personales:</strong> Información de identificación personal, como su nombre, dirección de correo electrónico, número de teléfono y datos demográficos (como su edad y sexo) que nos proporciona voluntariamente cuando se registra en la aplicación.</li>
+                    <li><strong>Datos de Uso:</strong> Información que nuestro servidor recopila automáticamente cuando accede a la aplicación, como su dirección IP, tipo de navegador, sistema operativo, horas de acceso y las páginas que ha visto directamente antes y después de acceder a la aplicación.</li>
+                    <li><strong>Datos de la Aplicación:</strong> Información relacionada con su uso de la aplicación, como las reservas de turnos, cancelaciones, historial de citas, créditos comprados y comunicaciones con los profesionales.</li>
+                </ul>
+                <h4 class="text-lg font-semibold text-white pt-2">2. Uso de su Información</h4>
+                <ul class="list-disc list-inside pl-4 space-y-2">
+                    <li>Crear y gestionar su cuenta.</li>
+                    <li>Facilitar la reserva y gestión de turnos.</li>
+                    <li>Procesar pagos y reembolsos.</li>
+                    <li>Enviarle correos electrónicos sobre su cuenta o sus turnos.</li>
+                    <li>Monitorear y analizar el uso y las tendencias para mejorar su experiencia.</li>
+                </ul>
+                <h4 class="text-lg font-semibold text-white pt-2">3. Divulgación de su Información</h4>
+                <ul class="list-disc list-inside pl-4 space-y-2">
+                    <li><strong>Por Ley o para Proteger Derechos:</strong> Si creemos que la divulgación es necesaria para responder a un proceso legal, para investigar o remediar posibles violaciones de nuestras políticas, o para proteger los derechos, la propiedad y la seguridad de otros.</li>
+                    <li><strong>Proveedores de Servicios:</strong> Podemos compartir su información con terceros que realizan servicios para nosotros o en nuestro nombre, incluido el procesamiento de pagos, el análisis de datos y el servicio al cliente.</li>
+                   </ul>
+                <p class="pt-4">Si tiene preguntas o comentarios sobre esta Política de Privacidad, contáctenos en: gain_wellness@hotmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="terms-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-gray-900 border border-gray-700 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
+            <div class="p-5 border-b border-gray-700 flex justify-between items-center sticky top-0 bg-gray-900">
+                <h3 class="text-xl font-semibold text-white">Términos y Condiciones</h3>
+                <button id="close-terms-modal" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <div class="p-6 text-gray-300 space-y-4 overflow-y-auto modal-scrollbar">
+                <p><strong>Última actualización:</strong> 22 de Julio de 2025</p>
+                <p>Lea estos Términos y Condiciones detenidamente antes de utilizar la aplicación Gain Wellness operada por FF Digital Lab.</p>
+                <h4 class="text-lg font-semibold text-white pt-2">1. Aceptación de los Términos</h4>
+                <p>Al acceder o utilizar el Servicio, usted acepta estar sujeto a estos Términos. Si no está de acuerdo con alguna parte de los términos, no podrá acceder al Servicio.</p>
+                <h4 class="text-lg font-semibold text-white pt-2">2. Cuentas</h4>
+                <p>Cuando crea una cuenta con nosotros, debe proporcionarnos información precisa, completa y actualizada en todo momento. El incumplimiento de esta obligación constituye una violación de los Términos, que puede resultar en la terminación inmediata de su cuenta en nuestro Servicio.</p>
+                <h4 class="text-lg font-semibold text-white pt-2">3. Gestión de Turnos y Créditos</h4>
+                <p>El Servicio permite a los usuarios gestionar turnos y créditos. Las políticas de cancelación, reprogramación y reembolso de créditos son establecidas por cada centro (gimnasio, centro médico, etc.) que utiliza nuestra plataforma. Gain Wellness no es responsable de estas políticas. Es su responsabilidad comprender los términos específicos de cada centro antes de realizar una reserva o comprar créditos.</p>
+                <h4 class="text-lg font-semibold text-white pt-2">4. Terminación</h4>
+                <p>Podemos rescindir o suspender su cuenta de inmediato, sin previo aviso ni responsabilidad, por cualquier motivo, incluido, entre otros, si incumple los Términos.</p>
+                <h4 class="text-lg font-semibold text-white pt-2">5. Cambios</h4>
+                <p>Nos reservamos el derecho, a nuestra entera discreción, de modificar o reemplazar estos Términos en cualquier momento. Le notificaremos cualquier cambio publicando los nuevos Términos en esta página.</p>
+                <p class="pt-4">Si tiene alguna pregunta sobre estos Términos, contáctenos en: gain_wellness@hotmail.com</p>
+            </div>
+        </div>
+    </div>
+    
+     <script>
+        // --- SCRIPT MODIFICADO ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            const contactOptionsModal = document.getElementById('contact-options-modal');
+            const openContactOptionsMainBtn = document.getElementById('open-contact-options-main-btn');
+            const closeContactOptionsModalBtn = document.getElementById('close-contact-options-modal');
+
+            const privacyModal = document.getElementById('privacy-modal');
+            const openPrivacyLink = document.getElementById('open-privacy-link');
+            const closePrivacyModalBtn = document.getElementById('close-privacy-modal');
+
+            const termsModal = document.getElementById('terms-modal');
+            const openTermsLink = document.getElementById('open-terms-link');
+            const closeTermsModalBtn = document.getElementById('close-terms-modal');
+
+            function openModal(modal) {
+                if (modal) {
+                    modal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeModal(modal) {
+                if (modal) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            // Event Listeners
+            openContactOptionsMainBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(contactOptionsModal); });
+            closeContactOptionsModalBtn.addEventListener('click', () => closeModal(contactOptionsModal));
+            contactOptionsModal.addEventListener('click', (e) => { if (e.target === contactOptionsModal) closeModal(contactOptionsModal); });
+            
+            openPrivacyLink.addEventListener('click', (e) => { e.preventDefault(); openModal(privacyModal); });
+            closePrivacyModalBtn.addEventListener('click', () => closeModal(privacyModal));
+            privacyModal.addEventListener('click', (e) => { if (e.target === privacyModal) closeModal(privacyModal); });
+
+            openTermsLink.addEventListener('click', (e) => { e.preventDefault(); openModal(termsModal); });
+            closeTermsModalBtn.addEventListener('click', () => closeModal(termsModal));
+            termsModal.addEventListener('click', (e) => { if (e.target === termsModal) closeModal(termsModal); });
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeModal(contactOptionsModal);
+                    closeModal(privacyModal);
+                    closeModal(termsModal);
+                }
+            });
+
+            // --- LÓGICA DE PRECIOS INTERNACIONALES ---
+            const btnArgentina = document.getElementById('btn-argentina');
+            const btnInternacional = document.getElementById('btn-internacional');
+            const priceInicial = document.getElementById('price-inicial');
+            const currencyInicial = document.getElementById('currency-inicial');
+            const pricePro = document.getElementById('price-pro');
+            const currencyPro = document.getElementById('currency-pro');
+
+            // Función para actualizar estilos de los botones
+            function setToggleStyles(activeBtn, inactiveBtn) {
+                activeBtn.classList.add('bg-gray-700', 'text-white', 'shadow-sm');
+                activeBtn.classList.remove('text-gray-400', 'hover:text-white');
+                
+                inactiveBtn.classList.remove('bg-gray-700', 'text-white', 'shadow-sm');
+                inactiveBtn.classList.add('text-gray-400', 'hover:text-white');
+            }
+
+            btnArgentina.addEventListener('click', () => {
+                setToggleStyles(btnArgentina, btnInternacional);
+                priceInicial.textContent = '$30.000';
+                currencyInicial.textContent = 'ARS /mes';
+                pricePro.textContent = '$40.000';
+                currencyPro.textContent = 'ARS /mes';
+            });
+
+            btnInternacional.addEventListener('click', () => {
+                setToggleStyles(btnInternacional, btnArgentina);
+                priceInicial.textContent = '$22';
+                currencyInicial.textContent = 'USD /mes';
+                pricePro.textContent = '$29';
+                currencyPro.textContent = 'USD /mes';
+            });
+        });
+    </script>
+</body>
+</html>
