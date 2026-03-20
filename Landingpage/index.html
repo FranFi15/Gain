@@ -68,6 +68,7 @@
                 <div class="hidden sm:flex sm:items-center sm:space-x-8">
                     <a href="#features" class="text-gray-300 hover:text-white transition-colors duration-300">Características</a>
                     <a href="#interfaces" class="text-gray-300 hover:text-white transition-colors duration-300">Interfaces</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-white transition-colors duration-300">Precios</a>
                     <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contacto</a>
                 </div>
                 <div class="sm:hidden">
@@ -79,6 +80,7 @@
             <div id="mobile-menu" class="hidden sm:hidden pb-4">
                 <a href="#features" class="block text-gray-300 hover:text-white py-2">Características</a>
                 <a href="#interfaces" class="block text-gray-300 hover:text-white py-2">Interfaces</a>
+                <a href="#pricing" class="block text-gray-300 hover:text-white py-2">Precios</a>
                 <a href="#contact" class="block text-gray-300 hover:text-white py-2">Contacto</a>
             </div>
         </nav>
@@ -194,6 +196,64 @@
                 </div>
             </div>
         </section>
+
+        <section id="pricing" class="py-20 sm:py-24 bg-black border-t border-gray-900">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10">
+                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">Planes a tu medida</h2>
+                    <p class="mt-4 text-lg text-gray-400">
+                        Luego de 20 días de prueba, elige el plan que mejor se adapte al tamaño actual de tu negocio. Sin costos ocultos.
+                    </p>
+                </div>
+
+                <div class="flex justify-center mb-12">
+                    <div class="relative flex bg-gray-900 p-1 rounded-full border border-gray-700">
+                        <button id="btn-argentina" class="relative w-32 py-2 text-sm font-semibold rounded-full bg-gray-700 text-white shadow-sm transition-all duration-300">Argentina</button>
+                        <button id="btn-internacional" class="relative w-32 py-2 text-sm font-semibold rounded-full text-gray-400 hover:text-white transition-all duration-300">Internacional</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="flex flex-col p-8 rounded-2xl bg-gray-900 border border-gray-600 relative overflow-hidden shadow-2xl shadow-gray-900/50">
+                        <h3 class="text-xl font-semibold text-gray-300">Plan Inicial</h3>
+                        <div class="mt-4 flex items-baseline">
+                            <span id="price-inicial" class="text-4xl font-bold tracking-tight text-white">$30.000</span>
+                            <span id="currency-inicial" class="ml-1 text-xl font-semibold text-gray-500">ARS /mes</span>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-400">Ideal para centros en crecimiento.</p>
+                        
+                        <div class="my-8 h-px bg-gray-800"></div>
+                        
+                        <ul role="list" class="space-y-4 flex-1">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                <span class="ml-3 text-gray-300">Hasta <strong>100 clientes activos</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col p-8 rounded-2xl bg-gray-900 border border-gray-600 relative overflow-hidden shadow-2xl shadow-gray-900/50">
+                        <div class="absolute top-0 right-0 -mt-2 -mr-2 w-24 h-24 bg-white opacity-5 rounded-full blur-xl"></div>
+                        
+                        <h3 class="text-xl font-semibold text-white">Plan Pro</h3>
+                        <div class="mt-4 flex items-baseline">
+                            <span id="price-pro" class="text-4xl font-bold tracking-tight text-white">$50.000</span>
+                            <span id="currency-pro" class="ml-1 text-xl font-semibold text-gray-500">ARS /mes</span>
+                        </div>
+                        <p class="mt-2 text-sm text-gray-400">Para negocios consolidados.</p>
+                        
+                        <div class="my-8 h-px bg-gray-700"></div>
+                        
+                        <ul role="list" class="space-y-4 flex-1">
+                            <li class="flex items-start">
+                                <svg class="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                <span class="ml-3 text-white">Más de <strong>100 clientes activos</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <section id="contact" class="bg-black py-20 sm:py-24">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -202,9 +262,9 @@
                     Ponete en contacto con nosotros para una demostración personalizada.
                 </p>
                 <div class="mt-10">
-                    <button id="open-contact-options-main-btn" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <a href="#" id="open-contact-options-main-btn" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
                         Solicitar tu app
-                    </button>
+                    </a>
                 </div>
             </div>
         </section>
@@ -256,7 +316,8 @@
                         <h2 class="mb-6 text-sm font-semibold text-white uppercase">Recursos</h2>
                         <ul class="text-gray-400">
                             <li class="mb-4"><a href="#features" class="hover:underline">Características</a></li>
-                            <li><a href="#interfaces" class="hover:underline">Interfaces</a></li>
+                            <li class="mb-4"><a href="#interfaces" class="hover:underline">Interfaces</a></li>
+                            <li><a href="#pricing" class="hover:underline">Precios</a></li>
                         </ul>
                     </div>
                     <div>
@@ -415,9 +476,40 @@
                     closeModal(termsModal);
                 }
             });
+
+            // --- LÓGICA DE PRECIOS INTERNACIONALES ---
+            const btnArgentina = document.getElementById('btn-argentina');
+            const btnInternacional = document.getElementById('btn-internacional');
+            const priceInicial = document.getElementById('price-inicial');
+            const currencyInicial = document.getElementById('currency-inicial');
+            const pricePro = document.getElementById('price-pro');
+            const currencyPro = document.getElementById('currency-pro');
+
+            // Función para actualizar estilos de los botones
+            function setToggleStyles(activeBtn, inactiveBtn) {
+                activeBtn.classList.add('bg-gray-700', 'text-white', 'shadow-sm');
+                activeBtn.classList.remove('text-gray-400', 'hover:text-white');
+                
+                inactiveBtn.classList.remove('bg-gray-700', 'text-white', 'shadow-sm');
+                inactiveBtn.classList.add('text-gray-400', 'hover:text-white');
+            }
+
+            btnArgentina.addEventListener('click', () => {
+                setToggleStyles(btnArgentina, btnInternacional);
+                priceInicial.textContent = '$30.000';
+                currencyInicial.textContent = 'ARS /mes';
+                pricePro.textContent = '$40.000';
+                currencyPro.textContent = 'ARS /mes';
+            });
+
+            btnInternacional.addEventListener('click', () => {
+                setToggleStyles(btnInternacional, btnArgentina);
+                priceInicial.textContent = '$22';
+                currencyInicial.textContent = 'USD /mes';
+                pricePro.textContent = '$29';
+                currencyPro.textContent = 'USD /mes';
+            });
         });
     </script>
 </body>
 </html>
-
-
