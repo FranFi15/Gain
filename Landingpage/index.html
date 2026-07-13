@@ -1,300 +1,877 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gain Wellness es la solución todo-en-uno para gimnasios y centros médicos. Gestiona turnos, clientes y profesionales de forma inteligente y centralizada.">
-    
+    <meta name="description"
+        content="Gain Wellness es la solución todo-en-uno para gimnasios y centros médicos. Gestiona turnos, clientes y profesionales de forma inteligente y centralizada.">
+
     <title>Gain Wellness - Gestiona tus Turnos Fácilmente</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#000000',
+                            card: '#18181B',
+                            border: '#27272A'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/icono-noti.png" type="image/png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="./img/icono-noti.png" type="image/png">
 
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #000000;
-            color: #FFFFFF;
-            scroll-behavior: smooth;
+            background-color: #FFFFFF;
+            background-image: url('./img/background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #0F172A;
+            overflow-x: hidden;
         }
+
+        h1,
+        h2,
+        h3,
+        .font-heading {
+            font-family: 'Outfit', sans-serif;
+        }
+
         .hero-gradient {
-            background: radial-gradient(ellipse at top, #1a1a1a 10%, #000000 70%);
+            background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.6) 10%, rgba(255, 255, 255, 0.92) 80%);
         }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(148, 163, 184, 0.8);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.12);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.9);
+        }
+
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
+
+        /* Carrusel infinito animado */
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 32s linear infinite;
+        }
+
+        .marquee-container:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+
+        .marquee-mask {
+            mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+        }
+
+        /* iPhone mockups */
         .iphone-frame {
             position: relative;
             width: 100%;
             max-width: 280px;
             aspect-ratio: 393 / 852;
-            background: #1c1c1e;
-            border-radius: 50px;
+            background: #18181B;
+            border-radius: 38px;
             padding: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 0 1px 2px rgba(255,255,255,0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(0, 0, 0, 0.15), inset 0 0 12px rgba(0, 0, 0, 0.8);
         }
+
         .iphone-screen {
             width: 100%;
             height: 100%;
             background: #000;
-            border-radius: 38px;
+            border-radius: 28px;
             overflow: hidden;
+            position: relative;
         }
+
         .iphone-screenshot {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .modal-scrollbar::-webkit-scrollbar { width: 8px; }
-        .modal-scrollbar::-webkit-scrollbar-track { background: #2d3748; }
-        .modal-scrollbar::-webkit-scrollbar-thumb { background: #718096; border-radius: 4px; }
+
+        .iphone-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 24px;
+            background: #18181B;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+            z-index: 10;
+        }
+
+        /* Scrollbar en modales */
+        .modal-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+
+        .modal-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 3px;
+        }
+
+        .modal-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+        /* Estilo para slider de clientes */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 6px;
+            background: #0F172A;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            border: 2px solid #334155;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #E2E8F0;
+            border-radius: 4px;
+        }
     </style>
 </head>
-<body class="antialiased">
 
-    <header class="sticky top-0 z-40 w-full bg-black bg-opacity-80 backdrop-blur-md">
+<body class="antialiased selection:bg-white selection:text-black">
+
+    <header class="sticky top-0 z-40 w-full glass-nav transition-all duration-300">
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <a href="#" class="flex-shrink-0">
-                    <img class="h-12 w-auto" src="./img/logo.png" alt="Logo de Gain Wellness">
+                <a href="#" class="flex-shrink-0 group flex items-center gap-3">
+                    <img class="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+                        src="./img/logo.png" alt="Logo de Gain Wellness">
                 </a>
-                <div class="hidden sm:flex sm:items-center sm:space-x-8">
-                    <a href="#features" class="text-gray-300 hover:text-white transition-colors duration-300">Características</a>
-                    <a href="#interfaces" class="text-gray-300 hover:text-white transition-colors duration-300">Interfaces</a>
-                    <a href="#pricing" class="text-gray-300 hover:text-white transition-colors duration-300">Precios</a>
-                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contacto</a>
+                <div class="hidden md:flex md:items-center md:space-x-8 font-medium text-sm">
+                    <a href="#features"
+                        class="text-gray-600 hover:text-black transition-colors duration-300">Características</a>
+                    <a href="#clientes"
+                        class="text-gray-600 hover:text-black transition-colors duration-300">Clientes</a>
+                    <a href="#interfaces"
+                        class="text-gray-600 hover:text-black transition-colors duration-300">Interfaces</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-black transition-colors duration-300">Precios</a>
+                    <a href="#contact"
+                        class="text-gray-600 hover:text-black transition-colors duration-300">Contacto</a>
                 </div>
-                <div class="sm:hidden">
-                    <button id="menu-btn" type="button" class="text-white p-2" aria-label="Abrir menú">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <div class="hidden sm:flex items-center gap-4">
+                    <a href="#pricing"
+                        class="bg-black text-white font-semibold px-5 py-2.5 rounded-lg text-sm hover:bg-gray-800 transition-all duration-300 shadow-sm transform hover:scale-105">
+                        Empezar Ahora
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" type="button"
+                        class="text-gray-700 hover:text-black p-2 rounded-lg focus:outline-none"
+                        aria-label="Abrir menú">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
-            <div id="mobile-menu" class="hidden sm:hidden pb-4">
-                <a href="#features" class="block text-gray-300 hover:text-white py-2">Características</a>
-                <a href="#interfaces" class="block text-gray-300 hover:text-white py-2">Interfaces</a>
-                <a href="#pricing" class="block text-gray-300 hover:text-white py-2">Precios</a>
-                <a href="#contact" class="block text-gray-300 hover:text-white py-2">Contacto</a>
+            <div id="mobile-menu" class="hidden md:hidden pb-6 pt-2 space-y-3 border-t border-gray-200 mt-2">
+                <a href="#features"
+                    class="block text-gray-700 hover:text-black py-2 px-3 rounded-lg hover:bg-gray-100 transition-colors">Características</a>
+                <a href="#clientes"
+                    class="block text-gray-700 hover:text-black py-2 px-3 rounded-lg hover:bg-gray-100 transition-colors">Clientes</a>
+                <a href="#interfaces"
+                    class="block text-gray-700 hover:text-black py-2 px-3 rounded-lg hover:bg-gray-100 transition-colors">Interfaces</a>
+                <a href="#pricing"
+                    class="block text-gray-700 hover:text-black py-2 px-3 rounded-lg hover:bg-gray-100 transition-colors">Precios</a>
+                <a href="#contact"
+                    class="block text-gray-700 hover:text-black py-2 px-3 rounded-lg hover:bg-gray-100 transition-colors">Contacto</a>
+                <div class="pt-3">
+                    <a href="#pricing"
+                        class="block w-full text-center bg-black text-white font-semibold px-5 py-3 rounded-lg text-sm hover:bg-gray-800">
+                        Empezar Ahora
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
 
-    <main>
+    <main class="relative z-10">
+        <!-- SECCIÓN HERO -->
         <section class="relative text-center py-20 sm:py-32 lg:py-40 hero-gradient">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="max-w-3xl mx-auto">
-                    <img class="h-40 sm:h-60 w-auto mx-auto" src="./img/logo.png" alt="Logo de Gain Wellness">
-                    <h1 class="fade-in text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white mt-4" style="animation-delay: 200ms;">
-                        Optimiza tu negocio. Empodera a tus clientes.
+                <div class="max-w-4xl mx-auto">
+                    <!-- LOGO EN EL HOME -->
+                    <img class="h-32 sm:h-48 w-auto mx-auto mb-8 fade-in" src="./img/logo.png"
+                        alt="Logo de Gain Wellness">
+
+
+
+                    <h1 class="fade-in text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 mt-2 leading-[1.1]"
+                        style="animation-delay: 150ms;">
+                        Optimiza tu negocio. <br class="hidden sm:inline">
+                        <span>Empodera a tus clientes.</span>
                     </h1>
-                    <p class="fade-in max-w-2xl mx-auto mt-6 text-md sm:text-lg text-gray-300" style="animation-delay: 300ms;">
-                        La solución todo-en-uno para administrar turnos, clientes y profesionales de forma inteligente y centralizada.
+
+                    <p class="fade-in max-w-2xl mx-auto mt-6 text-base sm:text-xl text-gray-600 font-normal leading-relaxed"
+                        style="animation-delay: 300ms;">
+                        La plataforma todo-en-uno para administrar turnos, créditos, clientes y profesionales de forma
+                        centralizada, automatizada y elegante.
                     </p>
-                    <div class="fade-in mt-10 flex flex-col sm:flex-row justify-center gap-4" style="animation-delay: 400ms;">
-                        <a href="#mobile-app" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
+
+                    <div class="fade-in mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
+                        style="animation-delay: 450ms;">
+                        <a href="#mobile-app"
+                            class="w-full sm:w-auto bg-black text-white font-bold px-8 py-4 rounded-lg hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1 text-center shadow-lg">
                             Ir a la App
                         </a>
-                        <a href="#interfaces" class="border border-gray-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-gray-800 hover:border-gray-500 transition-all duration-300">
+                        <a href="#interfaces"
+                            class="w-full sm:w-auto bg-white border border-gray-300 text-gray-900 font-semibold px-8 py-4 rounded-lg hover:bg-gray-50 transition-all duration-300 text-center shadow-sm">
                             Ver Interfaces
                         </a>
                     </div>
+
+
                 </div>
             </div>
         </section>
 
-        <section id="features" class="py-20 sm:py-24 bg-black">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">Una plataforma, control total.</h2>
-                    <p class="mt-4 text-lg text-gray-400">
-                        Diseñada para ser tan versátil como tu negocio, nuestra app simplifica la complejidad de la gestión diaria.
-                    </p>
-                </div>
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-                    <div class="fade-in" style="animation-delay: 100ms;">
-                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 border border-gray-700">
-                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        </div>
-                        <h3 class="mt-5 text-xl font-semibold text-white">Autogestión para Clientes</h3>
-                        <p class="mt-2 text-gray-400">Permite que tus clientes reserven, cancelen y gestionen sus turnos 24/7, liberando a tu personal.</p>
+        <!-- SECCIÓN: ALGUNOS DE NUESTROS CLIENTES (Carrusel Infinito) -->
+        <section id="clientes"
+            class="py-20 bg-white/80 backdrop-blur-md border-y border-gray-200 relative overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center">
+
+                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mt-4 font-heading">
+                    Algunos de nuestros clientes
+                </h2>
+            </div>
+
+            <!-- Carrusel Infinito -->
+            <div class="marquee-container w-full overflow-hidden marquee-mask py-4">
+                <div class="animate-marquee gap-6 sm:gap-8 items-center">
+
+                    <!-- BLOQUE DE LOGOS 1 -->
+                    <!-- Cliente 1 -->
+                    <div class="flex items-center justify-center px-10 sm:px-16 min-w-[260px] sm:min-w-[380px] group">
+                        <img src="./clientes/ElitePerfomance.png"
+                            class="h-24 sm:h-36 w-auto max-w-[240px] sm:max-w-[340px] object-contain transition-all duration-300 group-hover:scale-110 opacity-95 group-hover:opacity-100"
+                            alt="Elite Performance">
                     </div>
-                    <div class="fade-in" style="animation-delay: 200ms;">
-                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 border border-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
-                        </div>
-                        <h3 class="mt-5 text-xl font-semibold text-white">Visión para Profesionales</h3>
-                        <p class="mt-2 text-gray-400">Tus especialistas tendrán su agenda y herramientas para planes o diagnósticos en un solo lugar.</p>
+
+                    <!-- Cliente 2 -->
+                    <div class="flex items-center justify-center px-10 sm:px-16 min-w-[260px] sm:min-w-[380px] group">
+                        <img src="./clientes/Hyve.png"
+                            class="h-24 sm:h-36 w-auto max-w-[240px] sm:max-w-[340px] object-contain transition-all duration-300 group-hover:scale-110 opacity-95 group-hover:opacity-100"
+                            alt="Hyve">
                     </div>
-                    <div class="fade-in" style="animation-delay: 300ms;">
-                        <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gray-800 border border-gray-700">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-8 h-8 text-white"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
-                        </div>
-                        <h3 class="mt-5 text-xl font-semibold text-white">Control Administrativo</h3>
-                        <p class="mt-2 text-gray-400">Gestiona clientes, turnos, créditos y pagos desde una plataforma centralizada.</p>
+
+                    <!-- Cliente 3 -->
+                    <div class="flex items-center justify-center px-10 sm:px-16 min-w-[260px] sm:min-w-[380px] group">
+                        <img src="./clientes/Latribu.png"
+                            class="h-24 sm:h-36 w-auto max-w-[240px] sm:max-w-[340px] object-contain transition-all duration-300 group-hover:scale-110 opacity-95 group-hover:opacity-100"
+                            alt="La Tribu">
                     </div>
+
+                    <!-- Cliente 4 -->
+                    <div class="flex items-center justify-center px-10 sm:px-16 min-w-[260px] sm:min-w-[380px] group">
+                        <img src="./clientes/Logo%20VP%20Training.png"
+                            class="h-24 sm:h-36 w-auto max-w-[240px] sm:max-w-[340px] object-contain transition-all duration-300 group-hover:scale-110 opacity-95 group-hover:opacity-100"
+                            alt="VP Training">
+                    </div>
+
+                    <!-- Cliente 5 -->
+                    <div class="flex items-center justify-center px-10 sm:px-16 min-w-[260px] sm:min-w-[380px] group">
+                        <img src="./clientes/MSEntrenamiento.png"
+                            class="h-24 sm:h-36 w-auto max-w-[240px] sm:max-w-[340px] object-contain transition-all duration-300 group-hover:scale-110 opacity-95 group-hover:opacity-100"
+                            alt="MS Entrenamiento">
+                    </div>
+
+                    <!-- BLOQUE DE LOGOS 2 (Duplicado exacto para bucle infinito continuo) -->
+                    <!-- Cliente 1 -->
+                    <div class="flex items-center justify-center px-10 sm:px-16 min-w-[260px] sm:min-w-[380px] group">
+                        <img src="./clientes/ElitePerfomance.png"
+                            class="h-24 sm:h-36 w-auto max-w-[240px] sm:max-w-[340px] object-contain transition-all duration-300 group-hover:scale-110 opacity-95 group-hover:opacity-100"
+                            alt="Elite Performance">
+                    </div>
+
+                    <!-- Cliente 2 -->
+                    <div class="flex items-center justify-center px-10 sm:px-16 min-w-[260px] sm:min-w-[380px] group">
+                        <img src="./clientes/Hyve.png"
+                            class="h-24 sm:h-36 w-auto max-w-[240px] sm:max-w-[340px] object-contain transition-all duration-300 group-hover:scale-110 opacity-95 group-hover:opacity-100"
+                            alt="Hyve">
+                    </div>
+
+                    <!-- Cliente 3 -->
+                    <div class="flex items-center justify-center px-10 sm:px-16 min-w-[260px] sm:min-w-[380px] group">
+                        <img src="./clientes/Latribu.png"
+                            class="h-24 sm:h-36 w-auto max-w-[240px] sm:max-w-[340px] object-contain transition-all duration-300 group-hover:scale-110 opacity-95 group-hover:opacity-100"
+                            alt="La Tribu">
+                    </div>
+
+                    <!-- Cliente 4 -->
+                    <div class="flex items-center justify-center px-10 sm:px-16 min-w-[260px] sm:min-w-[380px] group">
+                        <img src="./clientes/Logo%20VP%20Training.png"
+                            class="h-24 sm:h-36 w-auto max-w-[240px] sm:max-w-[340px] object-contain transition-all duration-300 group-hover:scale-110 opacity-95 group-hover:opacity-100"
+                            alt="VP Training">
+                    </div>
+
+                    <!-- Cliente 5 -->
+                    <div class="flex items-center justify-center px-10 sm:px-16 min-w-[260px] sm:min-w-[380px] group">
+                        <img src="./clientes/MSEntrenamiento.png"
+                            class="h-24 sm:h-36 w-auto max-w-[240px] sm:max-w-[340px] object-contain transition-all duration-300 group-hover:scale-110 opacity-95 group-hover:opacity-100"
+                            alt="MS Entrenamiento">
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <section id="interfaces" class="py-20 sm:py-24 bg-white text-black">
+        <!-- SECCIÓN CARACTERÍSTICAS -->
+        <section id="features" class="py-20 sm:py-28 relative">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-3xl mx-auto">
-                    <h2 class="text-3xl font-bold tracking-tight sm:text-5xl">Una experiencia de usuario impecable</h2>
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl font-heading">
+                        Una plataforma, control total.
+                    </h2>
                     <p class="mt-4 text-lg text-gray-600">
-                        Interfaces limpias e intuitivas diseñadas para cada rol.
+                        Diseñada con la máxima precisión para automatizar tu operativa diaria y simplificar la gestión
+                        de tu centro.
                     </p>
                 </div>
 
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-y-16 md:gap-x-8 lg:gap-x-12">
-                    
-                    <div class="flex flex-col items-center text-center">
-                        <h3 class="text-2xl font-bold mb-6">Interfaz del Cliente</h3>
-                        <div class="iphone-frame">
-                            <div class="iphone-notch"></div>
-                            <div class="iphone-screen">
-                                <img src="./img/cliente.jpg" alt="Muestra de la interfaz de cliente" class="iphone-screenshot">
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Tarjeta 1 -->
+                    <div class="glass-card rounded-xl p-8 flex flex-col justify-between relative overflow-hidden group">
+                        <div>
+                            <div
+                                class="w-14 h-14 rounded-lg bg-gray-900 border border-gray-700 flex items-center justify-center text-white mb-6 group-hover:scale-105 transition-transform duration-300 shadow-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                </svg>
                             </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3 font-heading">Autogestión para Clientes
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+                                Permite que tus clientes reserven, cancelen y consulten sus turnos y paquetes 24/7 sin
+                                intermediarios.
+                            </p>
                         </div>
-                        <p class="mt-6 max-w-xs text-gray-600">
-                            El poder en manos de tus clientes para ver la disponibilidad, reservar y revisar su historial.
-                        </p>
+                        <div
+                            class="mt-6 pt-6 border-t border-gray-200 flex items-center text-gray-800 text-sm font-semibold">
+                            <span>Disponibilidad en tiempo real</span>
+                        </div>
                     </div>
 
-                    <div class="flex flex-col items-center text-center">
-                        <h3 class="text-2xl font-bold mb-6">Interfaz del Profesional</h3>
-                        <div class="iphone-frame">
-                            <div class="iphone-notch"></div>
-                            <div class="iphone-screen">
-                                <img src="./img/profe.jpg" alt="Muestra de la interfaz de profesional" class="iphone-screenshot">
+                    <!-- Tarjeta 2 -->
+                    <div class="glass-card rounded-xl p-8 flex flex-col justify-between relative overflow-hidden group">
+                        <div>
+                            <div
+                                class="w-14 h-14 rounded-lg bg-gray-900 border border-gray-700 flex items-center justify-center text-white mb-6 group-hover:scale-105 transition-transform duration-300 shadow-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                                    <polyline points="14 2 14 8 20 8" />
+                                    <line x1="16" y1="13" x2="8" y2="13" />
+                                    <line x1="16" y1="17" x2="8" y2="17" />
+                                    <line x1="10" y1="9" x2="8" y2="9" />
+                                </svg>
                             </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3 font-heading">Visión para Profesionales
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+                                Cada especialista tiene acceso a su propia agenda optimizada, ficha del cliente, planes
+                                personalizados de entrenamiento y asistencia en un solo clic.
+                            </p>
                         </div>
-                        <p class="mt-6 max-w-xs text-gray-600">
-                            Una agenda inteligente que organiza el día a día para ver turnos y acceder a la información del cliente.
-                        </p>
+                        <div
+                            class="mt-6 pt-6 border-t border-gray-200 flex items-center text-gray-800 text-sm font-semibold">
+                            <span>Historial y seguimiento exacto</span>
+                        </div>
                     </div>
 
-                    <div class="flex flex-col items-center text-center">
-                        <h3 class="text-2xl font-bold mb-6">Panel del Administrador</h3>
-                        <div class="iphone-frame">
-                            <div class="iphone-notch"></div>
-                            <div class="iphone-screen">
-                                <img src="./img/admin.jpg" alt="Muestra del panel de administrador" class="iphone-screenshot">
+                    <!-- Tarjeta 3 -->
+                    <div class="glass-card rounded-xl p-8 flex flex-col justify-between relative overflow-hidden group">
+                        <div>
+                            <div
+                                class="w-14 h-14 rounded-lg bg-gray-900 border border-gray-700 flex items-center justify-center text-white mb-6 group-hover:scale-105 transition-transform duration-300 shadow-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <line x1="12" y1="20" x2="12" y2="10" />
+                                    <line x1="18" y1="20" x2="18" y2="4" />
+                                    <line x1="6" y1="20" x2="6" y2="16" />
+                                </svg>
                             </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-3 font-heading">Control Administrativo</h3>
+                            <p class="text-gray-600 leading-relaxed text-sm sm:text-base">
+                                El centro de comando absoluto para administrar cobros, renovaciones de créditos,
+                                horarios del personal y métricas de crecimiento sin margen de error.
+                            </p>
                         </div>
-                        <p class="mt-6 max-w-xs text-gray-600">
-                            El centro de control total para configurar turnos, gestionar profesionales y controlar créditos.
-                        </p>
+                        <div
+                            class="mt-6 pt-6 border-t border-gray-200 flex items-center text-gray-800 text-sm font-semibold">
+                            <span>Estadísticas y control financiero</span>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </section>
 
-        <section id="pricing" class="py-20 sm:py-24 bg-black border-t border-gray-900">
+        <!-- SECCIÓN INTERFACES -->
+        <section id="interfaces" class="py-20 sm:py-28 bg-white/80 backdrop-blur-md border-t border-gray-200 relative">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-10">
-                    <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">Planes a tu medida</h2>
-                    <p class="mt-4 text-lg text-gray-400">
-                        Luego de 20 días de prueba, elige el plan que mejor se adapte al tamaño actual de tu negocio. Sin costos ocultos.
+                <div class="text-center max-w-3xl mx-auto">
+
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mt-4 font-heading">
+                        Una experiencia de usuario impecable
+                    </h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Interfaces limpias, rápidas e intuitivas adaptadas a las necesidades de cada rol.
                     </p>
                 </div>
 
-                <div class="flex justify-center mb-12">
-                    <div class="relative flex bg-gray-900 p-1 rounded-full border border-gray-700">
-                        <button id="btn-argentina" class="relative w-32 py-2 text-sm font-semibold rounded-full bg-gray-700 text-white shadow-sm transition-all duration-300">Argentina</button>
-                        <button id="btn-internacional" class="relative w-32 py-2 text-sm font-semibold rounded-full text-gray-400 hover:text-white transition-all duration-300">Internacional</button>
-                    </div>
-                </div>
+                <div class="mt-20 grid grid-cols-1 lg:grid-cols-3 gap-12 sm:gap-16 items-start">
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="flex flex-col p-8 rounded-2xl bg-gray-900 border border-gray-600 relative overflow-hidden shadow-2xl shadow-gray-900/50">
-                        <h3 class="text-xl font-semibold text-gray-300">Plan Inicial</h3>
-                        <div class="mt-4 flex items-baseline">
-                            <span id="price-inicial" class="text-4xl font-bold tracking-tight text-white">$30.000</span>
-                            <span id="currency-inicial" class="ml-1 text-xl font-semibold text-gray-500">ARS /mes</span>
+                    <!-- Interfaz Cliente -->
+                    <div class="flex flex-col items-center text-center group">
+                        <div class="mb-6">
+                            <span
+                                class="inline-block px-4 py-1.5 rounded-md bg-gray-900 text-white font-bold text-sm border border-gray-800 shadow-sm">01.
+                                App de Clientes</span>
                         </div>
-                        <p class="mt-2 text-sm text-gray-400">Ideal para centros en crecimiento.</p>
-                        
-                        <div class="my-8 h-px bg-gray-800"></div>
-                        
-                        <ul role="list" class="space-y-4 flex-1">
-                            <li class="flex items-start">
-                                <svg class="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                                <span class="ml-3 text-gray-300">Hasta <strong>100 clientes activos</strong></span>
-                            </li>
-                        </ul>
+                        <div
+                            class="iphone-frame transform group-hover:-translate-y-2 transition-transform duration-500">
+                            <div class="iphone-notch"></div>
+                            <div class="iphone-screen">
+                                <img src="./img/cliente.jpeg" alt="Muestra de la interfaz de cliente"
+                                    class="iphone-screenshot">
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-2 font-heading">Interfaz del Cliente</h3>
+                        <p class="max-w-xs text-gray-600 text-sm leading-relaxed">
+                            Reserva en 3 clics, historial de asistencia, compra online de créditos y notificaciones
+                            instantáneas.
+                        </p>
                     </div>
 
-                    <div class="flex flex-col p-8 rounded-2xl bg-gray-900 border border-gray-600 relative overflow-hidden shadow-2xl shadow-gray-900/50">
-                        <div class="absolute top-0 right-0 -mt-2 -mr-2 w-24 h-24 bg-white opacity-5 rounded-full blur-xl"></div>
-                        
-                        <h3 class="text-xl font-semibold text-white">Plan Pro</h3>
-                        <div class="mt-4 flex items-baseline">
-                            <span id="price-pro" class="text-4xl font-bold tracking-tight text-white">$50.000</span>
-                            <span id="currency-pro" class="ml-1 text-xl font-semibold text-gray-500">ARS /mes</span>
+                    <!-- Interfaz Profesional -->
+                    <div class="flex flex-col items-center text-center group">
+                        <div class="mb-6">
+                            <span
+                                class="inline-block px-4 py-1.5 rounded-md bg-gray-900 text-white font-bold text-sm border border-gray-800 shadow-sm">02.
+                                App de Profesionales</span>
                         </div>
-                        <p class="mt-2 text-sm text-gray-400">Para negocios consolidados.</p>
-                        
-                        <div class="my-8 h-px bg-gray-700"></div>
-                        
-                        <ul role="list" class="space-y-4 flex-1">
-                            <li class="flex items-start">
-                                <svg class="h-6 w-6 flex-shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                                <span class="ml-3 text-white">Más de <strong>100 clientes activos</strong></span>
-                            </li>
-                        </ul>
+                        <div
+                            class="iphone-frame transform group-hover:-translate-y-2 transition-transform duration-500">
+                            <div class="iphone-notch"></div>
+                            <div class="iphone-screen">
+                                <img src="./img/profe.jpeg" alt="Muestra de la interfaz de profesional"
+                                    class="iphone-screenshot">
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-2 font-heading">Interfaz del Profesional
+                        </h3>
+                        <p class="max-w-xs text-gray-600 text-sm leading-relaxed">
+                            Agenda del día ordenada, ficha del paciente/alumno, marcación de asistencia y control de
+                            turnos en vivo.
+                        </p>
                     </div>
+
+                    <!-- Panel Administrador -->
+                    <div class="flex flex-col items-center text-center group">
+                        <div class="mb-6">
+                            <span
+                                class="inline-block px-4 py-1.5 rounded-md bg-gray-900 text-white font-bold text-sm border border-gray-800 shadow-sm">03.
+                                Panel de Control</span>
+                        </div>
+                        <div
+                            class="iphone-frame transform group-hover:-translate-y-2 transition-transform duration-500">
+                            <div class="iphone-notch"></div>
+                            <div class="iphone-screen">
+                                <img src="./img/admin.jpeg" alt="Muestra del panel de administrador"
+                                    class="iphone-screenshot">
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mt-8 mb-2 font-heading">Panel del Administrador</h3>
+                        <p class="max-w-xs text-gray-600 text-sm leading-relaxed">
+                            Supervisión 360° de cobros, configuración ilimitada de clases y métricas de rentabilidad en
+                            la palma de tu mano.
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </section>
-        
-        <section id="contact" class="bg-black py-20 sm:py-24">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">¿Listo para transformar tu gestión?</h2>
-                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-                    Ponete en contacto con nosotros para una demostración personalizada.
+
+        <!-- SECCIÓN PRECIOS ("Planes a tu medida") -->
+        <section id="pricing" class="py-20 sm:py-28 bg-white/80 backdrop-blur-md border-t border-gray-200 relative">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mt-4 font-heading">Planes a
+                        tu
+                        medida</h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Prueba 20 días sin compromiso. Luego, elige el plan que escale perfectamente junto con tu
+                        centro.
+                    </p>
+                </div>
+
+                <!-- Toggle de Moneda -->
+                <div class="flex justify-center mb-16">
+                    <div class="relative flex bg-gray-100 p-1.5 rounded-xl border border-gray-200 shadow-sm">
+                        <button id="btn-argentina"
+                            class="relative px-8 py-2.5 text-sm font-bold rounded-lg bg-white text-gray-900 shadow-sm transition-all duration-300">
+                            Argentina ($ ARS)
+                        </button>
+                        <button id="btn-internacional"
+                            class="relative px-8 py-2.5 text-sm font-bold rounded-lg text-gray-600 hover:text-gray-900 transition-all duration-300">
+                            Internacional ($ USD)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjetas de Precios -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-stretch">
+
+                    <!-- PLAN 1: HASTA 100 CLIENTES ACTIVOS -->
+                    <div
+                        class="glass-card flex flex-col p-8 sm:p-10 rounded-xl relative overflow-hidden border border-gray-200 hover:border-gray-400">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-2xl font-bold text-gray-900 font-heading">Plan Inicial</h3>
+                            <span
+                                class="px-3 py-1 text-xs font-semibold rounded-md bg-gray-100 text-gray-700 border border-gray-200">Centros
+                                en crecimiento</span>
+                        </div>
+
+                        <div class="mt-4 flex items-baseline gap-2">
+                            <span id="price-inicial"
+                                class="text-5xl font-extrabold tracking-tight text-gray-900 font-heading">$40.000</span>
+                            <span id="currency-inicial" class="text-lg font-bold text-gray-600">ARS /mes</span>
+                        </div>
+                        <p class="mt-3 text-sm text-gray-600">Todo lo necesario para arrancar con el pie derecho y
+                            profesionalizar tus turnos.</p>
+
+                        <div class="my-8 h-px bg-gray-200"></div>
+
+                        <ul role="list" class="space-y-4 flex-1 text-sm sm:text-base">
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 rounded-lg bg-gray-900 text-white border border-gray-800 flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">Hasta <strong class="text-gray-900 font-bold">100 clientes
+                                        activos</strong></span>
+                            </li>
+
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 rounded-lg bg-gray-900 text-white border border-gray-800 flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">Autogestión para clientes en Web y App</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 rounded-lg bg-gray-900 text-white border border-gray-800 flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">Agenda interactiva para profesionales</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 rounded-lg bg-gray-900 text-white border border-gray-800 flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">Soporte directo por WhatsApp y Email</span>
+                            </li>
+                        </ul>
+
+                        <div class="mt-8">
+                            <a href="#contact"
+                                class="block w-full text-center py-4 rounded-lg font-bold bg-black hover:bg-gray-800 text-white shadow-md transition-all duration-300">
+                                Elegir Plan Inicial
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PLAN 2: HASTA 300 CLIENTES ACTIVOS (+ REGLA DE EXCESO) -->
+                    <div
+                        class="glass-card flex flex-col p-8 sm:p-10 rounded-xl relative overflow-hidden border-2 border-gray-900 shadow-xl">
+                        <div class="absolute top-5 right-5">
+                            <span
+                                class="bg-black text-white font-extrabold text-xs px-3.5 py-1 rounded-md uppercase tracking-wider shadow-md">
+                                Recomendado
+                            </span>
+                        </div>
+
+                        <div class="flex items-center justify-between mb-4 pr-24">
+                            <h3 class="text-2xl font-bold text-gray-900 font-heading">Plan Pro</h3>
+                        </div>
+
+                        <div class="mt-4 flex items-baseline gap-2">
+                            <span id="price-pro"
+                                class="text-5xl font-extrabold tracking-tight text-gray-900 font-heading">$50.000</span>
+                            <span id="currency-pro" class="text-lg font-bold text-gray-600">ARS /mes</span>
+                        </div>
+                        <p class="mt-3 text-sm text-gray-600">Para negocios en máxima expansión con gran flujo diario de
+                            turnos y alumnos.</p>
+
+                        <div class="my-8 h-px bg-gray-200"></div>
+
+                        <ul role="list" class="space-y-4 flex-1 text-sm sm:text-base">
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 rounded-lg bg-gray-900 text-white flex items-center justify-center flex-shrink-0 font-bold shadow-sm">
+                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="3"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                </div>
+                                <span class="text-gray-900 font-bold">Hasta 300 clientes activos</span>
+                            </li>
+                            <!-- REGLA DE EXCESO RESALTADA -->
+                            <li class="flex items-start gap-3 bg-gray-100 border border-gray-200 p-3.5 rounded-lg">
+
+                                <div class="text-xs sm:text-sm text-gray-700">
+                                    <strong class="text-gray-900 font-bold">¿Tienes más de 300 clientes?</strong><br>
+                                    <span id="extra-clients-desc">Si superas los 300 clientes, solo se agregan
+                                        <strong>$5.000 ARS</strong> adicionales por cada 100 clientes activos.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 rounded-lg bg-gray-900 text-white border border-gray-800 flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                </div>
+                                <span class="text-gray-700">Todo lo incluido en el <strong
+                                        class="text-gray-900 font-bold">Plan
+                                        Inicial</strong></span>
+                            </li>
+
+                            <li class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 rounded-lg bg-gray-900 text-white border border-gray-800 flex items-center justify-center flex-shrink-0 shadow-sm">
+                                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                </div>
+                                <span class="text-gray-900 font-semibold">Soporte Prioritario VIP</span>
+                            </li>
+                        </ul>
+
+                        <div class="mt-8">
+                            <a href="#contact"
+                                class="block w-full text-center py-4 rounded-lg font-bold bg-black hover:bg-gray-800 text-white shadow-lg transition-all duration-300 transform hover:scale-[1.02]">
+                                Elegir Plan Pro
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- CALCULADORA INTERACTIVA DE PRECIOS -->
+                <div
+                    class="mt-16 max-w-3xl mx-auto glass-card p-8 rounded-xl border border-gray-200 text-center relative overflow-hidden shadow-lg">
+
+                    <h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-3 font-heading">¿Tienes más de 300
+                        clientes?
+                        Simula tu cuota exacta</h3>
+                    <p class="text-sm text-gray-600 mt-1">Desliza la barra para seleccionar la cantidad exacta de
+                        clientes activos en tu centro wellness.</p>
+
+                    <div class="mt-8 px-4">
+                        <div class="flex justify-between items-center text-sm font-semibold mb-3">
+                            <span class="text-gray-600">Clientes activos estimados:</span>
+                            <span id="slider-client-count"
+                                class="text-2xl font-extrabold text-gray-900 font-heading">300
+                                clientes</span>
+                        </div>
+                        <input type="range" id="client-slider" min="50" max="1200" step="50" value="300" class="w-full">
+                        <div class="flex justify-between text-xs text-gray-500 mt-2 font-medium">
+                            <span>50 clientes</span>
+                            <span>300 (Límite base Pro)</span>
+                            <span>600 clientes</span>
+                            <span>1,200+ clientes</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="mt-8 pt-6 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-50/80 p-5 rounded-lg border border-gray-200 shadow-inner">
+                        <div class="text-left">
+                            <span class="text-xs text-gray-500 block uppercase tracking-wider">Plan Recomendado para tu
+                                negocio:</span>
+                            <span id="calc-plan-name" class="text-lg font-bold text-gray-900">Plan Pro</span>
+                        </div>
+                        <div class="text-right sm:text-right text-center w-full sm:w-auto">
+                            <span class="text-xs text-gray-500 block uppercase tracking-wider">Inversión mensual
+                                calculada:</span>
+                            <div class="flex items-baseline justify-center sm:justify-end gap-1.5">
+                                <span id="calc-total-price"
+                                    class="text-3xl sm:text-4xl font-extrabold text-gray-900 font-heading">$50.000</span>
+                                <span id="calc-currency" class="text-sm font-bold text-gray-600">ARS /mes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN CONTACTO / CTA FINAL -->
+        <section id="contact"
+            class="bg-white/80 backdrop-blur-md py-20 sm:py-28 relative overflow-hidden border-t border-gray-200">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl mt-4 font-heading">¿Listo para
+                    transformar tu gestión?</h2>
+                <p class="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                    Contáctanos hoy para una demostración en vivo de 15 minutos y descubre cómo automatizar tu centro
+                    desde el día uno.
                 </p>
                 <div class="mt-10">
-                    <a href="#" id="open-contact-options-main-btn" class="bg-white text-black font-semibold px-8 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                        Solicitar tu app
+                    <a href="#" id="open-contact-options-main-btn"
+                        class="inline-block bg-black text-white font-bold px-10 py-4 rounded-lg hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1 text-lg shadow-lg">
+                        Solicitar tu app y demo
                     </a>
                 </div>
             </div>
         </section>
-        
-        <section id="mobile-app" class="py-20 sm:py-24 bg-gray-900 border-t border-gray-800">
+
+        <!-- SECCIÓN APP MÓVIL / DESCARGA -->
+        <section id="mobile-app" class="py-20 sm:py-28 bg-gray-50/80 backdrop-blur-md border-t border-gray-200">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl">Lleva Gain Wellness contigo</h2>
-                <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">
-                    Gestiona todo desde la palma de tu mano. Disponible ahora en tu tienda de aplicaciones y la web.
+                <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl font-heading">Lleva Gain Wellness
+                    contigo</h2>
+                <p class="mt-4 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                    Gestiona tu agenda desde la palma de tu mano. Disponible ahora en todas tus plataformas favoritas.
                 </p>
-                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6">
-                    <a href="https://app.gain-wellness.com/clients" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center w-60 hover:bg-gray-700 transition-colors">
-                        <img src="./img/web.png" class="h-12 w-auto" alt="Web App">
+                <div class="mt-12 flex flex-col sm:flex-row justify-center items-center gap-6">
+                    <a href="https://app.gain-wellness.com/clients" target="_blank" rel="noopener noreferrer"
+                        class="glass-card rounded-lg p-4 flex items-center w-64 border border-gray-200 hover:border-gray-400 transition-all group shadow-sm">
+                        <img src="./img/web.png" class="h-12 w-auto group-hover:scale-105 transition-transform"
+                            alt="Web App">
                         <div class="text-left ml-4">
-                            <p class="text-xs text-gray-400">Utilizar en</p>
-                            <p class="text-xl font-semibold text-white">Web App</p>
+                            <p class="text-xs text-gray-500 font-medium">Utilizar en</p>
+                            <p class="text-lg font-bold text-gray-900">Web App</p>
                         </div>
                     </a>
-                    <a href="https://apps.apple.com/ar/app/gain-wellness/id6749487969" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center w-60 hover:bg-gray-700 transition-colors">
-                        <img src="./img/appstore.png" class="h-12 w-auto" alt="App Store">
+                    <a href="https://apps.apple.com/ar/app/gain-wellness/id6749487969" target="_blank"
+                        rel="noopener noreferrer"
+                        class="glass-card rounded-lg p-4 flex items-center w-64 border border-gray-200 hover:border-gray-400 transition-all group shadow-sm">
+                        <img src="./img/appstore.png" class="h-12 w-auto group-hover:scale-105 transition-transform"
+                            alt="App Store">
                         <div class="text-left ml-4">
-                            <p class="text-xs text-gray-400">Descargar en</p>
-                            <p class="text-xl font-semibold text-white">App Store</p>
+                            <p class="text-xs text-gray-500 font-medium">Descargar en</p>
+                            <p class="text-lg font-bold text-gray-900">App Store</p>
                         </div>
                     </a>
-                    <a href="https://play.google.com/store/apps/details?id=com.franfi15.MOVILAPP&hl=es_AR" target="_blank" rel="noopener noreferrer" class="bg-gray-800 border border-gray-700 rounded-lg p-4 flex items-center w-60 hover:bg-gray-700 transition-colors">
-                        <img src="./img/playstore.png" alt="Play Store" class="h-12 w-auto">
+                    <a href="https://play.google.com/store/apps/details?id=com.franfi15.MOVILAPP&hl=es_AR"
+                        target="_blank" rel="noopener noreferrer"
+                        class="glass-card rounded-lg p-4 flex items-center w-64 border border-gray-200 hover:border-gray-400 transition-all group shadow-sm">
+                        <img src="./img/playstore.png" alt="Play Store"
+                            class="h-12 w-auto group-hover:scale-105 transition-transform">
                         <div class="text-left ml-4">
-                            <p class="text-xs text-gray-400">Descargar en</p>
-                            <p class="text-xl font-semibold text-white">Google Play</p>
+                            <p class="text-xs text-gray-500 font-medium">Descargar en</p>
+                            <p class="text-lg font-bold text-gray-900">Google Play</p>
                         </div>
                     </a>
                 </div>
@@ -302,84 +879,116 @@
         </section>
     </main>
 
-    <footer class="bg-gray-900 border-t border-gray-800">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer class="bg-white/90 backdrop-blur-md border-t border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-14">
             <div class="md:flex md:justify-between">
-                <div class="mb-6 md:mb-0">
+                <div class="mb-8 md:mb-0">
                     <a href="#" class="flex items-center">
-                        <img src="./img/logo.png" class="h-10 mr-3" alt="Logo de Gain Wellness" />
+                        <img src="./img/logo.png" class="h-11 mr-3" alt="Logo de Gain Wellness" />
                     </a>
-                    <p class="mt-4 text-gray-400 max-w-xs">La solución definitiva para la gestión de turnos y clientes.</p>
+                    <p class="mt-4 text-gray-600 max-w-xs text-sm leading-relaxed">La solución definitiva para potenciar
+                        la administración de turnos, profesionales y clientes en centros wellness.</p>
                 </div>
-                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3 text-sm">
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-white uppercase">Recursos</h2>
-                        <ul class="text-gray-400">
-                            <li class="mb-4"><a href="#features" class="hover:underline">Características</a></li>
-                            <li class="mb-4"><a href="#interfaces" class="hover:underline">Interfaces</a></li>
-                            <li><a href="#pricing" class="hover:underline">Precios</a></li>
+                        <h2 class="mb-5 text-xs font-bold text-gray-900 uppercase tracking-wider">Recursos</h2>
+                        <ul class="text-gray-600 space-y-3 font-medium">
+                            <li><a href="#features" class="hover:text-gray-900 transition-colors">Características</a>
+                            </li>
+                            <li><a href="#clientes" class="hover:text-gray-900 transition-colors">Clientes</a></li>
+                            <li><a href="#interfaces" class="hover:text-gray-900 transition-colors">Interfaces</a></li>
+                            <li><a href="#pricing" class="hover:text-gray-900 transition-colors">Precios</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-white uppercase">Síguenos</h2>
-                        <ul class="text-gray-400">
-                            <li class="mb-4"><a href="https://www.instagram.com/gain.wellness/" class="hover:underline ">Instagram</a></li>
+                        <h2 class="mb-5 text-xs font-bold text-gray-900 uppercase tracking-wider">Síguenos</h2>
+                        <ul class="text-gray-600 space-y-3 font-medium">
+                            <li><a href="https://www.instagram.com/gain.wellness/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hover:text-gray-900 transition-colors">Instagram</a>
+                            </li>
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-white uppercase">Legal</h2>
-                        <ul class="text-gray-400">
-                            <li class="mb-4"><a href="#" id="open-privacy-link" class="hover:underline cursor-pointer">Política de Privacidad</a></li>
-                            <li><a href="#" id="open-terms-link" class="hover:underline cursor-pointer">Términos y Condiciones</a></li>
+                        <h2 class="mb-5 text-xs font-bold text-gray-900 uppercase tracking-wider">Legal</h2>
+                        <ul class="text-gray-600 space-y-3 font-medium">
+                            <li><a href="#" id="open-privacy-link"
+                                    class="hover:text-gray-900 transition-colors cursor-pointer">Política de
+                                    Privacidad</a>
+                            </li>
+                            <li><a href="#" id="open-terms-link"
+                                    class="hover:text-gray-900 transition-colors cursor-pointer">Términos y
+                                    Condiciones</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <hr class="my-6 border-gray-700 sm:mx-auto lg:my-8" />
-            <div class="text-center text-gray-500">
-                <span class="text-sm">&copy; 2025 <a href="#" class="hover:underline">Gain Wellness™</a>. Todos los derechos reservados.</span>
+            <hr class="my-8 border-gray-200 sm:mx-auto" />
+            <div class="text-center text-gray-500 text-xs sm:text-sm">
+                <span>&copy; 2026 <a href="#" class="hover:text-gray-900 transition-colors font-medium">Gain
+                        Wellness™</a>.
+                    Todos los derechos reservados.</span>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/+5492932592219" target="_blank" rel="noopener noreferrer" class="fixed bottom-5 right-5 z-30 ">
-        <img class="h-20 w-auto" src="./img/WhatsApp.svg.webp" alt="WhatsApp">
+    <!-- Botón flotante WhatsApp -->
+    <a href="https://wa.me/+5492932592219" target="_blank" rel="noopener noreferrer"
+        class="fixed bottom-6 right-6 z-30 hover:scale-110 transition-transform duration-300 drop-shadow-2xl">
+        <img class="h-16 w-auto sm:h-20" src="./img/WhatsApp.svg.webp" alt="WhatsApp">
     </a>
 
-    <div id="contact-options-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
-        <div class="bg-gray-900 border border-gray-700 rounded-lg shadow-xl max-w-sm w-full">
-            <div class="p-5 border-b border-gray-700 flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-white">Contactar</h3>
-                <button id="close-contact-options-modal" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+    <!-- MODAL de opciones de contacto -->
+    <div id="contact-options-modal"
+        class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+        <div class="bg-white border border-gray-200 rounded-xl shadow-2xl max-w-sm w-full overflow-hidden">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center bg-gray-50">
+                <h3 class="text-xl font-bold text-gray-900 font-heading">Contactar con Gain</h3>
+                <button id="close-contact-options-modal"
+                    class="text-gray-400 hover:text-gray-900 text-3xl leading-none">&times;</button>
             </div>
             <div class="p-6 flex flex-col space-y-4">
-                <a href="mailto:gain_wellness@hotmail.com" class="w-full text-center bg-white text-black font-semibold px-6 py-3 rounded-lg hover:bg-gray-200 transition-all duration-300">
-                    Enviar Email
+                <a href="mailto:gain_wellness@hotmail.com"
+                    class="w-full text-center bg-gray-100 hover:bg-gray-200 text-gray-900 font-semibold px-6 py-3.5 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 border border-gray-200">
+                    ✉️ Enviar Email
                 </a>
-                <a href="https://wa.me/+5492932592219" target="_blank" rel="noopener noreferrer" class="w-full text-center bg-green-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-green-600 transition-all duration-300">
-                    Chatear por WhatsApp
+                <a href="https://wa.me/+5492932592219" target="_blank" rel="noopener noreferrer"
+                    class="w-full text-center bg-black hover:bg-gray-800 text-white font-bold px-6 py-3.5 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md">
+                    💬 Chatear por WhatsApp
                 </a>
             </div>
         </div>
     </div>
-    
-    
-    <div id="privacy-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
-        <div class="bg-gray-900 border border-gray-700 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
-            <div class="p-5 border-b border-gray-700 flex justify-between items-center sticky top-0 bg-gray-900">
-                <h3 class="text-xl font-semibold text-white">Política de Privacidad</h3>
-                <button id="close-privacy-modal" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+
+    <!-- MODAL Política de Privacidad -->
+    <div id="privacy-modal"
+        class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+        <div
+            class="bg-white border border-gray-200 rounded-xl shadow-2xl max-w-2xl w-full max-h-[88vh] flex flex-col overflow-hidden">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-white z-10">
+                <h3 class="text-xl font-bold text-gray-900 font-heading">Política de Privacidad</h3>
+                <button id="close-privacy-modal"
+                    class="text-gray-400 hover:text-gray-900 text-3xl leading-none">&times;</button>
             </div>
-            <div class="p-6 text-gray-300 space-y-4 overflow-y-auto modal-scrollbar">
+            <div class="p-6 text-gray-700 space-y-4 overflow-y-auto modal-scrollbar text-sm leading-relaxed">
                 <p><strong>Última actualización:</strong> 22 de Julio de 2025</p>
-                <p>Bienvenido a Gain Wellness. Su privacidad es de suma importancia para nosotros. Esta Política de Privacidad explica cómo recopilamos, usamos, divulgamos y salvaguardamos su información cuando utiliza nuestra aplicación móvil y sitio web.</p>
-                <h4 class="text-lg font-semibold text-white pt-2">1. Información que Recopilamos</h4>
+                <p>Bienvenido a Gain Wellness. Su privacidad es de suma importancia para nosotros. Esta Política de
+                    Privacidad explica cómo recopilamos, usamos, divulgamos y salvaguardamos su información cuando
+                    utiliza nuestra aplicación móvil y sitio web.</p>
+                <h4 class="text-base font-semibold text-gray-900 pt-2">1. Información que Recopilamos</h4>
                 <ul class="list-disc list-inside pl-4 space-y-2">
-                    <li><strong>Datos Personales:</strong> Información de identificación personal, como su nombre, dirección de correo electrónico, número de teléfono y datos demográficos (como su edad y sexo) que nos proporciona voluntariamente cuando se registra en la aplicación.</li>
-                    <li><strong>Datos de Uso:</strong> Información que nuestro servidor recopila automáticamente cuando accede a la aplicación, como su dirección IP, tipo de navegador, sistema operativo, horas de acceso y las páginas que ha visto directamente antes y después de acceder a la aplicación.</li>
-                    <li><strong>Datos de la Aplicación:</strong> Información relacionada con su uso de la aplicación, como las reservas de turnos, cancelaciones, historial de citas, créditos comprados y comunicaciones con los profesionales.</li>
+                    <li><strong>Datos Personales:</strong> Información de identificación personal, como su nombre,
+                        dirección de correo electrónico, número de teléfono y datos demográficos (como su edad y sexo)
+                        que nos proporciona voluntariamente cuando se registra en la aplicación.</li>
+                    <li><strong>Datos de Uso:</strong> Información que nuestro servidor recopila automáticamente cuando
+                        accede a la aplicación, como su dirección IP, tipo de navegador, sistema operativo, horas de
+                        acceso y las páginas que ha visto directamente antes y después de acceder a la aplicación.</li>
+                    <li><strong>Datos de la Aplicación:</strong> Información relacionada con su uso de la aplicación,
+                        como las reservas de turnos, cancelaciones, historial de citas, créditos comprados y
+                        comunicaciones con los profesionales.</li>
                 </ul>
-                <h4 class="text-lg font-semibold text-white pt-2">2. Uso de su Información</h4>
+                <h4 class="text-base font-semibold text-gray-900 pt-2">2. Uso de su Información</h4>
                 <ul class="list-disc list-inside pl-4 space-y-2">
                     <li>Crear y gestionar su cuenta.</li>
                     <li>Facilitar la reserva y gestión de turnos.</li>
@@ -387,49 +996,73 @@
                     <li>Enviarle correos electrónicos sobre su cuenta o sus turnos.</li>
                     <li>Monitorear y analizar el uso y las tendencias para mejorar su experiencia.</li>
                 </ul>
-                <h4 class="text-lg font-semibold text-white pt-2">3. Divulgación de su Información</h4>
+                <h4 class="text-base font-semibold text-gray-900 pt-2">3. Divulgación de su Información</h4>
                 <ul class="list-disc list-inside pl-4 space-y-2">
-                    <li><strong>Por Ley o para Proteger Derechos:</strong> Si creemos que la divulgación es necesaria para responder a un proceso legal, para investigar o remediar posibles violaciones de nuestras políticas, o para proteger los derechos, la propiedad y la seguridad de otros.</li>
-                    <li><strong>Proveedores de Servicios:</strong> Podemos compartir su información con terceros que realizan servicios para nosotros o en nuestro nombre, incluido el procesamiento de pagos, el análisis de datos y el servicio al cliente.</li>
-                   </ul>
-                <p class="pt-4">Si tiene preguntas o comentarios sobre esta Política de Privacidad, contáctenos en: gain_wellness@hotmail.com</p>
+                    <li><strong>Por Ley o para Proteger Derechos:</strong> Si creemos que la divulgación es necesaria
+                        para responder a un proceso legal, para investigar o remediar posibles violaciones de nuestras
+                        políticas, o para proteger los derechos, la propiedad y la seguridad de otros.</li>
+                    <li><strong>Proveedores de Servicios:</strong> Podemos compartir su información con terceros que
+                        realizan servicios para nosotros o en nuestro nombre, incluido el procesamiento de pagos, el
+                        análisis de datos y el servicio al cliente.</li>
+                </ul>
+                <p class="pt-4 text-gray-500">Si tiene preguntas o comentarios sobre esta Política de Privacidad,
+                    contáctenos en: gain_wellness@hotmail.com</p>
             </div>
         </div>
     </div>
 
-    <div id="terms-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4 transition-opacity duration-300">
-        <div class="bg-gray-900 border border-gray-700 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] flex flex-col">
-            <div class="p-5 border-b border-gray-700 flex justify-between items-center sticky top-0 bg-gray-900">
-                <h3 class="text-xl font-semibold text-white">Términos y Condiciones</h3>
-                <button id="close-terms-modal" class="text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+    <!-- MODAL Términos y Condiciones -->
+    <div id="terms-modal"
+        class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 transition-opacity duration-300">
+        <div
+            class="bg-white border border-gray-200 rounded-xl shadow-2xl max-w-2xl w-full max-h-[88vh] flex flex-col overflow-hidden">
+            <div class="p-6 border-b border-gray-200 flex justify-between items-center sticky top-0 bg-white z-10">
+                <h3 class="text-xl font-bold text-gray-900 font-heading">Términos y Condiciones</h3>
+                <button id="close-terms-modal"
+                    class="text-gray-400 hover:text-gray-900 text-3xl leading-none">&times;</button>
             </div>
-            <div class="p-6 text-gray-300 space-y-4 overflow-y-auto modal-scrollbar">
+            <div class="p-6 text-gray-700 space-y-4 overflow-y-auto modal-scrollbar text-sm leading-relaxed">
                 <p><strong>Última actualización:</strong> 22 de Julio de 2025</p>
-                <p>Lea estos Términos y Condiciones detenidamente antes de utilizar la aplicación Gain Wellness operada por FF Digital Lab.</p>
-                <h4 class="text-lg font-semibold text-white pt-2">1. Aceptación de los Términos</h4>
-                <p>Al acceder o utilizar el Servicio, usted acepta estar sujeto a estos Términos. Si no está de acuerdo con alguna parte de los términos, no podrá acceder al Servicio.</p>
-                <h4 class="text-lg font-semibold text-white pt-2">2. Cuentas</h4>
-                <p>Cuando crea una cuenta con nosotros, debe proporcionarnos información precisa, completa y actualizada en todo momento. El incumplimiento de esta obligación constituye una violación de los Términos, que puede resultar en la terminación inmediata de su cuenta en nuestro Servicio.</p>
-                <h4 class="text-lg font-semibold text-white pt-2">3. Gestión de Turnos y Créditos</h4>
-                <p>El Servicio permite a los usuarios gestionar turnos y créditos. Las políticas de cancelación, reprogramación y reembolso de créditos son establecidas por cada centro (gimnasio, centro médico, etc.) que utiliza nuestra plataforma. Gain Wellness no es responsable de estas políticas. Es su responsabilidad comprender los términos específicos de cada centro antes de realizar una reserva o comprar créditos.</p>
-                <h4 class="text-lg font-semibold text-white pt-2">4. Terminación</h4>
-                <p>Podemos rescindir o suspender su cuenta de inmediato, sin previo aviso ni responsabilidad, por cualquier motivo, incluido, entre otros, si incumple los Términos.</p>
-                <h4 class="text-lg font-semibold text-white pt-2">5. Cambios</h4>
-                <p>Nos reservamos el derecho, a nuestra entera discreción, de modificar o reemplazar estos Términos en cualquier momento. Le notificaremos cualquier cambio publicando los nuevos Términos en esta página.</p>
-                <p class="pt-4">Si tiene alguna pregunta sobre estos Términos, contáctenos en: gain_wellness@hotmail.com</p>
+                <p>Lea estos Términos y Condiciones detenidamente antes de utilizar la aplicación Gain Wellness operada
+                    por FF Digital Lab.</p>
+                <h4 class="text-base font-semibold text-gray-900 pt-2">1. Aceptación de los Términos</h4>
+                <p>Al acceder o utilizar el Servicio, usted acepta estar sujeto a estos Términos. Si no está de acuerdo
+                    con alguna parte de los términos, no podrá acceder al Servicio.</p>
+                <h4 class="text-base font-semibold text-gray-900 pt-2">2. Cuentas</h4>
+                <p>Cuando crea una cuenta con nosotros, debe proporcionarnos información precisa, completa y actualizada
+                    en todo momento. El incumplimiento de esta obligación constituye una violación de los Términos, que
+                    puede resultar en la terminación inmediata de su cuenta en nuestro Servicio.</p>
+                <h4 class="text-base font-semibold text-gray-900 pt-2">3. Gestión de Turnos y Créditos</h4>
+                <p>El Servicio permite a los usuarios gestionar turnos y créditos. Las políticas de cancelación,
+                    reprogramación y reembolso de créditos son establecidas por cada centro (gimnasio, centro médico,
+                    etc.) que utiliza nuestra plataforma. Gain Wellness no es responsable de estas políticas. Es su
+                    responsabilidad comprender los términos específicos de cada centro antes de realizar una reserva o
+                    comprar créditos.</p>
+                <h4 class="text-base font-semibold text-gray-900 pt-2">4. Terminación</h4>
+                <p>Podemos rescindir o suspender su cuenta de inmediato, sin previo aviso ni responsabilidad, por
+                    cualquier motivo, incluido, entre otros, si incumple los Términos.</p>
+                <h4 class="text-base font-semibold text-gray-900 pt-2">5. Cambios</h4>
+                <p>Nos reservamos el derecho, a nuestra entera discreción, de modificar o reemplazar estos Términos en
+                    cualquier momento. Le notificaremos cualquier cambio publicando los nuevos Términos en esta página.
+                </p>
+                <p class="pt-4 text-gray-500">Si tiene alguna pregunta sobre estos Términos, contáctenos en:
+                    gain_wellness@hotmail.com</p>
             </div>
         </div>
     </div>
-    
-     <script>
-        // --- SCRIPT MODIFICADO ---
+
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Menú móvil
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
-            menuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
 
+            // Modales
             const contactOptionsModal = document.getElementById('contact-options-modal');
             const openContactOptionsMainBtn = document.getElementById('open-contact-options-main-btn');
             const closeContactOptionsModalBtn = document.getElementById('close-contact-options-modal');
@@ -456,19 +1089,18 @@
                 }
             }
 
-            // Event Listeners
-            openContactOptionsMainBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(contactOptionsModal); });
-            closeContactOptionsModalBtn.addEventListener('click', () => closeModal(contactOptionsModal));
-            contactOptionsModal.addEventListener('click', (e) => { if (e.target === contactOptionsModal) closeModal(contactOptionsModal); });
-            
-            openPrivacyLink.addEventListener('click', (e) => { e.preventDefault(); openModal(privacyModal); });
-            closePrivacyModalBtn.addEventListener('click', () => closeModal(privacyModal));
-            privacyModal.addEventListener('click', (e) => { if (e.target === privacyModal) closeModal(privacyModal); });
+            if (openContactOptionsMainBtn) openContactOptionsMainBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(contactOptionsModal); });
+            if (closeContactOptionsModalBtn) closeContactOptionsModalBtn.addEventListener('click', () => closeModal(contactOptionsModal));
+            if (contactOptionsModal) contactOptionsModal.addEventListener('click', (e) => { if (e.target === contactOptionsModal) closeModal(contactOptionsModal); });
 
-            openTermsLink.addEventListener('click', (e) => { e.preventDefault(); openModal(termsModal); });
-            closeTermsModalBtn.addEventListener('click', () => closeModal(termsModal));
-            termsModal.addEventListener('click', (e) => { if (e.target === termsModal) closeModal(termsModal); });
-            
+            if (openPrivacyLink) openPrivacyLink.addEventListener('click', (e) => { e.preventDefault(); openModal(privacyModal); });
+            if (closePrivacyModalBtn) closePrivacyModalBtn.addEventListener('click', () => closeModal(privacyModal));
+            if (privacyModal) privacyModal.addEventListener('click', (e) => { if (e.target === privacyModal) closeModal(privacyModal); });
+
+            if (openTermsLink) openTermsLink.addEventListener('click', (e) => { e.preventDefault(); openModal(termsModal); });
+            if (closeTermsModalBtn) closeTermsModalBtn.addEventListener('click', () => closeModal(termsModal));
+            if (termsModal) termsModal.addEventListener('click', (e) => { if (e.target === termsModal) closeModal(termsModal); });
+
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeModal(contactOptionsModal);
@@ -477,39 +1109,95 @@
                 }
             });
 
-            // --- LÓGICA DE PRECIOS INTERNACIONALES ---
+            // --- GESTIÓN DE PRECIOS Y CALCULADORA DINÁMICA ---
+            let isArgentina = true;
+
             const btnArgentina = document.getElementById('btn-argentina');
             const btnInternacional = document.getElementById('btn-internacional');
             const priceInicial = document.getElementById('price-inicial');
             const currencyInicial = document.getElementById('currency-inicial');
             const pricePro = document.getElementById('price-pro');
             const currencyPro = document.getElementById('currency-pro');
+            const extraClientsDesc = document.getElementById('extra-clients-desc');
 
-            // Función para actualizar estilos de los botones
-            function setToggleStyles(activeBtn, inactiveBtn) {
-                activeBtn.classList.add('bg-gray-700', 'text-white', 'shadow-sm');
-                activeBtn.classList.remove('text-gray-400', 'hover:text-white');
-                
-                inactiveBtn.classList.remove('bg-gray-700', 'text-white', 'shadow-sm');
-                inactiveBtn.classList.add('text-gray-400', 'hover:text-white');
+            const clientSlider = document.getElementById('client-slider');
+            const sliderClientCount = document.getElementById('slider-client-count');
+            const calcPlanName = document.getElementById('calc-plan-name');
+            const calcTotalPrice = document.getElementById('calc-total-price');
+            const calcCurrency = document.getElementById('calc-currency');
+
+            function updatePricingUI() {
+                if (isArgentina) {
+                    // Botones
+                    if (btnArgentina) btnArgentina.className = "relative px-8 py-2.5 text-sm font-bold rounded-lg bg-white text-gray-900 shadow-sm transition-all duration-300";
+                    if (btnInternacional) btnInternacional.className = "relative px-8 py-2.5 text-sm font-bold rounded-lg text-gray-600 hover:text-gray-900 transition-all duration-300";
+
+                    // Tarjetas de precio
+                    if (priceInicial) priceInicial.textContent = '$40.000';
+                    if (currencyInicial) currencyInicial.textContent = 'ARS /mes';
+                    if (pricePro) pricePro.textContent = '$50.000';
+                    if (currencyPro) currencyPro.textContent = 'ARS /mes';
+                    if (extraClientsDesc) extraClientsDesc.innerHTML = 'Si superas los 300 clientes, solo se agregan <strong>$5.000 ARS</strong> adicionales por cada 100 clientes activos.';
+                    if (calcCurrency) calcCurrency.textContent = 'ARS /mes';
+                } else {
+                    // Botones
+                    if (btnInternacional) btnInternacional.className = "relative px-8 py-2.5 text-sm font-bold rounded-lg bg-white text-gray-900 shadow-sm transition-all duration-300";
+                    if (btnArgentina) btnArgentina.className = "relative px-8 py-2.5 text-sm font-bold rounded-lg text-gray-600 hover:text-gray-900 transition-all duration-300";
+
+                    // Tarjetas de precio
+                    if (priceInicial) priceInicial.textContent = '$28';
+                    if (currencyInicial) currencyInicial.textContent = 'USD /mes';
+                    if (pricePro) pricePro.textContent = '$34';
+                    if (currencyPro) currencyPro.textContent = 'USD /mes';
+                    if (extraClientsDesc) extraClientsDesc.innerHTML = 'Si superas los 300 clientes, solo se agregan <strong>$3 USD</strong> adicionales por cada 100 clientes activos.';
+                    if (calcCurrency) calcCurrency.textContent = 'USD /mes';
+                }
+                updateCalculator();
             }
 
-            btnArgentina.addEventListener('click', () => {
-                setToggleStyles(btnArgentina, btnInternacional);
-                priceInicial.textContent = '$30.000';
-                currencyInicial.textContent = 'ARS /mes';
-                pricePro.textContent = '$40.000';
-                currencyPro.textContent = 'ARS /mes';
-            });
+            function updateCalculator() {
+                if (!clientSlider) return;
+                const clients = parseInt(clientSlider.value, 10);
+                if (sliderClientCount) sliderClientCount.textContent = `${clients} clientes`;
 
-            btnInternacional.addEventListener('click', () => {
-                setToggleStyles(btnInternacional, btnArgentina);
-                priceInicial.textContent = '$22';
-                currencyInicial.textContent = 'USD /mes';
-                pricePro.textContent = '$29';
-                currencyPro.textContent = 'USD /mes';
-            });
+                let finalPrice = 0;
+                let planName = "";
+
+                if (clients <= 100) {
+                    planName = "Plan Inicial";
+                    finalPrice = isArgentina ? 40000 : 28;
+                } else if (clients <= 300) {
+                    planName = "Plan Pro";
+                    finalPrice = isArgentina ? 50000 : 34;
+                } else {
+                    planName = "Plan Pro (Personalizado)";
+                    const extraClients = clients - 300;
+                    const blocksOf100 = Math.ceil(extraClients / 100);
+                    if (isArgentina) {
+                        finalPrice = 50000 + (blocksOf100 * 5000);
+                    } else {
+                        finalPrice = 34 + (blocksOf100 * 3);
+                    }
+                }
+
+                if (calcPlanName) calcPlanName.textContent = planName;
+                if (calcTotalPrice) {
+                    if (isArgentina) {
+                        calcTotalPrice.textContent = `$${finalPrice.toLocaleString('es-AR')}`;
+                    } else {
+                        calcTotalPrice.textContent = `$${finalPrice}`;
+                    }
+                }
+            }
+
+            if (btnArgentina) btnArgentina.addEventListener('click', () => { isArgentina = true; updatePricingUI(); });
+            if (btnInternacional) btnInternacional.addEventListener('click', () => { isArgentina = false; updatePricingUI(); });
+            if (clientSlider) clientSlider.addEventListener('input', updateCalculator);
+
+            // Inicializar por defecto
+            updatePricingUI();
         });
     </script>
 </body>
+
 </html>
